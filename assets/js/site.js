@@ -10,6 +10,8 @@ if (menuBtn && menu) {
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.textContent = open ? 'Close' : 'Menu';
     document.body.style.overflow = open ? 'hidden' : '';
+    // Keep keyboard focus inside the menu while it is open
+    for (const el of document.querySelectorAll('main, footer')) el.inert = open;
     if (window.lenis) open ? window.lenis.stop() : window.lenis.start();
     if (open) {
       menu.querySelector('a').focus();

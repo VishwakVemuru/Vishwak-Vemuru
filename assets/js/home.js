@@ -4,8 +4,9 @@ const root = document.documentElement;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-// Shared with the 3D scene: angle of attack (degrees), scroll progress (0 top → 1 bottom), pointer
-const state = { alpha: 5, s: 0, px: 0, py: 0 };
+// Shared with the 3D scene: angle of attack (degrees), page progress (0 top → 1 bottom),
+// hero progress (0 → 1 as the hero scrolls away), pointer
+const state = { alpha: 5, s: 0, hero: 0, px: 0, py: 0 };
 let scene = null;
 const invalidate = () => scene && scene.invalidate();
 
@@ -52,6 +53,7 @@ function onScroll() {
   const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
   const s = Math.min(1, Math.max(0, scrollY / max));
   state.s = s;
+  state.hero = Math.min(1, scrollY / innerHeight);
   const k = Math.min(1, s / 0.75);
   const sky = SKY[root.dataset.theme === 'light' ? 'light' : 'dark'];
   root.style.setProperty('--sky-top', mixHex(sky.top[0], sky.top[1], k));

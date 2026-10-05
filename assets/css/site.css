@@ -181,6 +181,7 @@ main { position: relative; z-index: 1; }
   font-family: var(--display); font-stretch: 112%; font-weight: 700;
   font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.02; letter-spacing: -0.015em;
 }
+.h2, .h3, .page-title, .work-title, .statement, .lede { text-wrap: balance; }
 .h3 { font-family: var(--display); font-stretch: 110%; font-weight: 700; font-size: 1.35rem; line-height: 1.2; }
 .lede { color: var(--text-2); font-size: clamp(1.05rem, 1.5vw, 1.25rem); max-width: 40em; }
 .prose p { color: var(--text-2); max-width: 40em; }
@@ -238,7 +239,7 @@ main { position: relative; z-index: 1; }
   position: relative; min-height: 100vh; min-height: 100svh;
   display: grid; grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr auto; align-items: end;
-  max-width: 1280px; margin: 0 auto;
+  max-width: var(--max); margin: 0 auto;
   padding: 120px var(--gutter) 72px;
 }
 .hero-copy { grid-row: 2; min-width: 0; }
@@ -305,7 +306,7 @@ main { position: relative; z-index: 1; }
 .work-media img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform 1.2s var(--ease-out); }
 .work-media:hover img { transform: scale(1.04); }
 .work-index { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); }
-.work-title { font-family: var(--display); font-weight: 800; font-stretch: 120%; font-size: clamp(1.9rem, 3.8vw, 3rem); line-height: 1; text-transform: uppercase; margin: 10px 0 14px; }
+.work-title { font-family: var(--display); font-weight: 800; font-stretch: 115%; font-size: clamp(1.7rem, 2.7vw, 2.5rem); line-height: 1; text-transform: uppercase; margin: 10px 0 14px; }
 .work-title a { text-decoration: none; }
 .work-body p { color: var(--text-2); }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
@@ -337,10 +338,10 @@ main { position: relative; z-index: 1; }
 .page-hero { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: clamp(130px, 22vh, 220px) var(--gutter) 24px; }
 .page-title {
   font-family: var(--display); font-weight: 800; font-stretch: 125%; text-transform: uppercase;
-  font-size: clamp(3rem, 12vw, 9.5rem); line-height: 0.86; letter-spacing: -0.02em; margin: 14px 0 26px;
+  font-size: clamp(2.4rem, 10.5vw, 8.4rem); line-height: 0.86; letter-spacing: -0.02em; margin: 14px 0 26px;
 }
 .page-title .outline { color: transparent; -webkit-text-stroke: 1.5px var(--text); }
-.page-title-long { font-size: clamp(2.4rem, 7.4vw, 6.4rem); line-height: 0.9; }
+.page-title-long { font-size: clamp(1.7rem, 7.4vw, 6.4rem); line-height: 0.9; }
 .split-word { white-space: nowrap; }
 .crumbs { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-2); }
 .crumbs a { color: var(--text-2); }
@@ -359,6 +360,7 @@ main { position: relative; z-index: 1; }
 .gallery .tall { grid-column: span 4; }
 .gallery .half { grid-column: span 6; }
 .gallery .tall:first-child:nth-last-child(2) { grid-column: 3 / span 4; }
+.gallery .tall img { aspect-ratio: 9 / 16; object-fit: cover; object-position: top; }
 @media (max-width: 760px) {
   .gallery .wide, .gallery .tall, .gallery .half, .gallery .tall:first-child:nth-last-child(2) { grid-column: 1 / -1; }
   .gallery .tall { max-width: 360px; }
@@ -444,6 +446,9 @@ main { position: relative; z-index: 1; }
    Theme switch: new theme revealed by a circle growing from the toggle (theme.js).
    Page navigation: old page lifts away, new page rises in. */
 @view-transition { navigation: auto; }
+.nav { view-transition-name: site-nav; }
+html.theme-vt .nav { view-transition-name: none; }
+::view-transition-group(site-nav) { animation: none; }
 ::view-transition-old(root) { animation: 0.35s cubic-bezier(.7, 0, .84, 0) both page-out; }
 ::view-transition-new(root) { animation: 0.6s var(--ease-out) 0.1s both page-in; }
 html.theme-vt::view-transition-old(root),
@@ -455,7 +460,7 @@ html.theme-vt::view-transition-new(root) { z-index: 2; }
 /* ───────── Motion (motion.js) ───────── */
 /* Hide split text until it has been split, so it never flashes; motion.js and a 3 s failsafe remove this */
 .motion-pending [data-split], .motion-pending [data-reveal] { visibility: hidden; }
-.split-mask { overflow-x: visible; overflow-y: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; perspective: 700px; }
+.split-mask { overflow-x: visible !important; overflow-y: clip !important; padding-bottom: 0.08em; margin-bottom: -0.08em; perspective: 700px; }
 .earth-room { height: 38vh; }
 
 @media (prefers-reduced-motion: reduce) {

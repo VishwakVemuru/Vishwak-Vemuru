@@ -109,7 +109,8 @@ export function startScene(canvas, state, { lowPower, reducedMotion, theme }) {
     pitch.rotation.z = alpha * DEG;
     pitch.position.y = reducedMotion ? 0 : Math.sin(t * 0.8) * 0.06; // gentle turbulence
 
-    const climb = smooth(0.02, 0.6, s);
+    // The aircraft climbs out of frame as the hero scrolls away
+    const climb = smooth(0.05, 0.95, state.hero);
     const baseX = mobile ? 0.1 : 2.7, baseY = mobile ? 2.2 : 1.4;
     flight.scale.setScalar(mobile ? 0.55 : 0.85);
     flight.position.set(baseX + climb * 2.5, baseY + climb * climb * 11, -climb * 5);
@@ -117,7 +118,7 @@ export function startScene(canvas, state, { lowPower, reducedMotion, theme }) {
     flight.rotation.x = 0.32 + state.py * 0.05;
     flight.visible = climb < 0.999;
     if (flight.visible) flow.update(reducedMotion ? 0 : dt, t, alpha);
-    flow.setOpacity(1 - smooth(0.25, 0.55, s));
+    flow.setOpacity(1 - smooth(0.3, 0.8, state.hero));
 
     stars.material.opacity = dark ? smooth(0.15, 0.65, s) : 0;
     stars.rotation.y = t * 0.003;
