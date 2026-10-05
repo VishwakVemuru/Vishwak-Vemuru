@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CricScore · Vishwak Vemuru</title>
+  <meta name="description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/cricscore/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/cricscore/" />
+  <meta property="og:title" content="CricScore · Vishwak Vemuru" />
+  <meta property="og:description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/orion-1920.webp); --space-sm: url(/assets/img/space/orion-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">CricScore</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>CricScore</h1>
+      <p class="lede" data-split="lines">A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline.</p>
+      <div class="btns" data-reveal="up" style="margin-top:26px">
+        <a class="btn btn-solid" href="https://cricscore-eta.vercel.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-line" href="https://github.com/VishwakVemuru/CricScore" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="facts" data-reveal="up" style="max-width:640px">
+        <div><dt>Type</dt><dd>Product</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, physics and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, localStorage</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap">
+      <figure class="shot shot-hero" data-reveal="image">
+          <img src="/assets/img/projects/cric-desktop.webp" width="1440" height="900" alt="CricScore home screen: new match, match history and a top players leaderboard" loading="lazy" decoding="async" />
+          <figcaption>What you see when you open it</figcaption>
+        </figure>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Overview</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The idea</h2>
+        <div class="prose">
+          <p data-split="lines">CricScore was built to solve a real problem: scoring local cricket matches accurately on a phone, without an internet connection or a complicated app.</p>
+          <p data-split="lines">Pick a format, name the teams, unlock scoring with the admin PIN and log every delivery. The app handles the rules (extras, free hits, the last batter batting alone) and keeps everyone's career stats up to date.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Features</p>
+      <h2 class="h2" data-split="chars">What it does</h2>
+      <ul class="features" data-reveal="up"><li><strong>Ball-by-ball scoring</strong>Log every delivery with full detail.</li><li><strong>Any format</strong>T20, ODI, T10, Test or your own custom rules.</li><li><strong>Free-hit logic</strong>Automatically flags and enforces free hits after no-balls.</li><li><strong>Extras</strong>Wides, no-balls, byes and leg-byes handled correctly.</li><li><strong>Undo</strong>Step back through deliveries without corrupting the scorecard.</li><li><strong>Player career stats</strong>Batting and bowling tracked across matches, with a top players board.</li><li><strong>Joker role</strong>A custom player role with its own in-game logic.</li><li><strong>Admin PIN</strong>Locks scoring so nobody edits by accident.</li><li><strong>Works offline</strong>Saved to localStorage, so a refresh never loses the match.</li></ul>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Under the hood</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The maths</h2>
+        <div>
+          <ol class="roadmap" data-reveal="up">
+            <li>Set up the match: format, teams, overs and players.</li>
+            <li>Enter the admin PIN to unlock scoring.</li>
+            <li>Tap the result after each delivery.</li>
+            <li>Player stats update automatically; undo fixes mistakes.</li>
+            <li>A match summary closes each innings.</li>
+          </ol>
+          <p class="fig-cap" style="border:0;padding-left:0">The rules engine sits on a history of deliveries, which is what makes undo safe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Screens</p>
+      <h2 class="h2" data-split="chars">A closer look</h2>
+      <div class="gallery">
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/cric-home.webp" width="780" height="1688" alt="CricScore home on a phone: New Match, Match History and top players" loading="lazy" decoding="async" />
+          <figcaption>Home</figcaption>
+        </figure>
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/cric-format.webp" width="780" height="1688" alt="Match format screen: T20, ODI, T10, Test or custom, team names and the singles rule" loading="lazy" decoding="async" />
+          <figcaption>Choosing a format</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Roadmap</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">Coming next</h2>
+        <ul class="roadmap" data-reveal="up">
+          <li>Export scorecards as PDF</li>
+          <li>Partnership tracking</li>
+          <li>Over-by-over run-rate graph</li>
+          <li>Installable on Android (PWA)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <nav class="pager" aria-label="More projects">
+        <a href="/projects/exorbit/"><small>← Previous</small><span>Exorbit</span></a>
+        <a href="/projects/aircraft-performance-calculator/"><small>Next →</small><span>Calculator</span></a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

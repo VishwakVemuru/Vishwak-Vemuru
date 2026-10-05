@@ -25,7 +25,15 @@ for (const btn of document.querySelectorAll('.theme-toggle')) {
     const r = btn.getBoundingClientRect();
     const x = r.left + r.width / 2, y = r.top + r.height / 2;
     const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    const vt = document.startViewTransition(() => apply(next, btn));
+    // Marks this transition as the theme sweep, so the page-navigation animation stays out of it
+    root.classList.add('theme-vt');
+    let vt;
+    try {
+      vt = document.startViewTransition({ update: () => apply(next, btn), types: ['theme'] });
+    } catch {
+      vt = document.startViewTransition(() => apply(next, btn));
+    }
+    vt.finished.finally(() => root.classList.remove('theme-vt'));
     vt.ready.then(() => {
       root.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },

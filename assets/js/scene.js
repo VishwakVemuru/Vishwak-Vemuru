@@ -13,7 +13,7 @@ const SUN = new THREE.Vector3(-0.75, 0.45, 0.5).normalize();
 
 export function startScene(canvas, state, { lowPower, reducedMotion, theme }) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !lowPower, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPower ? 1.5 : 1.75));
   renderer.setClearColor(0x000000, 0);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -62,7 +62,7 @@ export function startScene(canvas, state, { lowPower, reducedMotion, theme }) {
     holder.position.y = 0.15;
     pitch.add(holder);
     needsFrame = true;
-  });
+  }, undefined, (err) => console.warn('Aircraft model failed to load:', err));
 
   // ───────── Stars ─────────
   const stars = buildStars(lowPower ? 900 : 2400);
@@ -122,6 +122,7 @@ export function startScene(canvas, state, { lowPower, reducedMotion, theme }) {
     stars.material.opacity = dark ? smooth(0.15, 0.65, s) : 0;
     stars.rotation.y = t * 0.003;
 
+    if (s > 0.25) earth.loadTextures();
     const rise = smooth(0.48, 1, s);
     earth.group.position.set(mobile ? 0 : 1.2, -27 + rise * (mobile ? 18.4 : 17.8), -5);
     earth.group.visible = rise > 0.001;
@@ -278,17 +279,13 @@ function buildEarth(renderer, loader, onReady) {
 
   const tl = new THREE.TextureLoader();
   const aniso = renderer.capabilities.getMaxAnisotropy();
-  const tex = (url, srgb) => tl.load(url, (t) => {
-    t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-    t.anisotropy = Math.min(8, aniso);
-    t.needsUpdate = true;
-    onReady();
-  });
-
+  // Textures (~1.2 MB) load only once the page has scrolled far enough to need them
+  const blank = new THREE.DataTexture(new Uint8Array([4, 9, 18, 255]), 1, 1);
+  blank.needsUpdate = true;
   const uniforms = {
-    dayTex: { value: tex('/assets/img/earth-day.jpg', true) },
-    nightTex: { value: tex('/assets/img/earth-night.jpg', true) },
-    cloudTex: { value: tex('/assets/img/earth-clouds.jpg', false) },
+    dayTex: { value: blank },
+    nightTex: { value: blank },
+    cloudTex: { value: blank },
     sunDir: { value: SUN.clone() },
     time: { value: 0 },
   };
@@ -375,7 +372,22 @@ function buildEarth(renderer, loader, onReady) {
     holder.scale.setScalar(1.5 / Math.max(size.x, size.y, size.z));
     iss.add(holder);
     onReady();
-  });
+  }, undefined, (err) => console.warn('ISS model failed to load:', err));
+
+  let texturesRequested = false;
+  function loadTextures() {
+    if (texturesRequested) return;
+    texturesRequested = true;
+    const load = (key, url, srgb) => tl.load(url, (t) => {
+      t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+      t.anisotropy = Math.min(8, aniso);
+      uniforms[key].value = t;
+      onReady();
+    }, undefined, (err) => console.warn('Earth texture failed to load:', url, err));
+    load('dayTex', '/assets/img/earth-day.jpg', true);
+    load('nightTex', '/assets/img/earth-night.jpg', true);
+    load('cloudTex', '/assets/img/earth-clouds.jpg', false);
+  }
 
   function update(t) {
     globe.rotation.y = -2.94 + t * 0.008;
@@ -389,5 +401,5 @@ function buildEarth(renderer, loader, onReady) {
     atmoMat.uniforms.strength.value = dark ? 1.1 : 0.7;
     atmoMat.needsUpdate = true;
   }
-  return { group, update, setTheme };
+  return { group, update, setTheme, loadTextures };
 }

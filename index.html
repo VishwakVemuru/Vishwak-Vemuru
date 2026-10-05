@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishwak Vemuru — aeronautics &amp; builds</title>
-  <meta name="description" content="Vishwak Vemuru — aeronautical engineering aspirant from Hyderabad building real tools: an aircraft performance calculator, an orbital mechanics simulator and more." />
-  <meta name="theme-color" content="#08111f" />
+  <title>Vishwak Vemuru · aeronautics &amp; builds</title>
+  <meta name="description" content="Vishwak Vemuru, an aeronautical engineering aspirant from Hyderabad building real tools: an aircraft performance calculator, an orbital mechanics game and more." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
   <link rel="canonical" href="https://vishwakvemuru.netlify.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vishwakvemuru.netlify.app/" />
-  <meta property="og:title" content="Vishwak Vemuru — aeronautics &amp; builds" />
-  <meta property="og:description" content="Scroll from sea level to orbit through the projects of an aeronautical engineering aspirant." />
+  <meta property="og:title" content="Vishwak Vemuru · aeronautics &amp; builds" />
+  <meta property="og:description" content="Vishwak Vemuru, an aeronautical engineering aspirant from Hyderabad building real tools: an aircraft performance calculator, an orbital mechanics game and more." />
   <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -23,70 +24,63 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
-  <link rel="modulepreload" href="/assets/vendor/three.module.min.js" />
   <script>
-    document.documentElement.classList.add('js');
-    // Apply the saved (or system) theme before first paint
     (function () {
-      var t = null;
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
       try { t = localStorage.getItem('theme'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.dataset.theme = t;
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
     })();
   </script>
   <script type="importmap">{ "imports": { "three": "/assets/vendor/three.module.min.js" } }</script>
+  <link rel="modulepreload" href="/assets/vendor/three.module.min.js" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-
-  <!-- 3D scene: purely decorative, sits behind the content -->
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/tarantula-1920.webp); --space-sm: url(/assets/img/space/tarantula-960.webp)" aria-hidden="true"></div>
   <canvas id="sky" aria-hidden="true"></canvas>
 
   <header class="nav">
-    <a class="nav-mark" href="#top" aria-label="Vishwak Vemuru, back to top">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
       <span>VV</span>
     </a>
-    <nav aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
     <button class="theme-toggle" type="button" aria-label="Switch to light mode">
       <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
     </button>
   </header>
-
-  <!-- Altimeter: altitude follows scroll; temperature and pressure from the ISA model -->
-  <aside class="alti" aria-hidden="true">
-    <div class="alti-tape">
-      <span class="alti-tick" style="--at:0">0</span>
-      <span class="alti-tick" style="--at:.25">11</span>
-      <span class="alti-tick" style="--at:.5">50</span>
-      <span class="alti-tick" style="--at:.75">100</span>
-      <span class="alti-tick" style="--at:1">408</span>
-      <span class="alti-bug"></span>
-    </div>
-    <dl class="alti-read">
-      <div><dt>alt</dt><dd data-alt-read>0.0 km</dd></div>
-      <div><dt>temp</dt><dd data-temp>15.0 °C</dd></div>
-      <div><dt>press</dt><dd data-press>101.3 kPa</dd></div>
-      <div class="alti-layer"><dd data-layer>Troposphere</dd></div>
-    </dl>
-  </aside>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
 
   <main id="main">
-    <!-- ───────── Hero · sea level ───────── -->
-    <section class="hero" id="top" data-alt="0">
+    <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Hyderabad, India · open to opportunities</p>
-        <h1 class="hero-name"><span>Vishwak</span> <span>Vemuru</span></h1>
-        <p class="hero-lede">Aeronautical engineering aspirant and builder — turning ideas into real tools, from orbital simulators to aerodynamic calculators.</p>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#projects">See the projects</a>
-          <a class="btn btn-line" href="#contact">Get in touch</a>
+        <p class="eyebrow" data-split="lines">Hyderabad, India · open to opportunities</p>
+        <h1 class="hero-name" data-split="chars" data-intro><span>Vishwak</span> <span class="outline">Vemuru</span></h1>
+        <p class="lede" data-split="lines">Aeronautical engineering aspirant and builder: turning ideas into real tools, from orbital simulators to aerodynamic calculators.</p>
+        <div class="btns" data-reveal="up">
+          <a class="btn btn-solid" href="/projects/">See the projects</a>
+          <a class="btn btn-line" href="/contact/">Get in touch</a>
         </div>
       </div>
 
@@ -99,181 +93,153 @@
           <path d="M70 118 L 46 70 L 64 70 L 96 114" class="fallback-fin" />
           <path d="M78 122 L 52 156 L 68 156 L 104 124" />
         </g>
-        <g stroke="currentColor" stroke-width=".8" opacity=".45">
-          <path d="M0 80 C 120 78, 200 60, 400 70" /><path d="M0 100 C 120 96, 220 84, 400 92" />
-          <path d="M0 150 C 140 150, 220 160, 400 172" /><path d="M0 170 C 140 170, 240 182, 400 196" />
-        </g>
       </svg>
 
-      <div class="hud" role="group" aria-labelledby="hud-title">
+      <div class="hud" role="group" aria-labelledby="hud-title" data-reveal="up">
         <p class="hud-title" id="hud-title">Live wing · fig. 1</p>
-        <label class="hud-slider">
+        <label class="slider">
           <span>Angle of attack</span>
           <input type="range" id="alpha" min="-4" max="20" step="0.5" value="5" aria-describedby="hud-note" />
         </label>
-        <dl class="hud-read" aria-live="off">
+        <dl class="readout">
           <div><dt>α</dt><dd data-hud="alpha">5.0°</dd></div>
           <div><dt>C<sub>L</sub></dt><dd data-hud="cl">0.70</dd></div>
           <div><dt>C<sub>D</sub></dt><dd data-hud="cd">0.025</dd></div>
           <div><dt>L/D</dt><dd data-hud="ld">28.2</dd></div>
         </dl>
-        <p class="hud-stall" data-hud="stall" hidden>Stall — flow separated</p>
-        <p class="hud-note" id="hud-note">NASA Global Hawk, flying a high-aspect-ratio wing model (AR 25, e = 0.9). Move the pointer over the sky or drag the slider.</p>
+        <p class="stall" data-hud="stall" hidden>Stall: flow separated</p>
+        <p class="note" id="hud-note">NASA Global Hawk on a high-aspect-ratio wing model (AR 25, e = 0.9). Move the pointer over the sky or drag the slider.</p>
       </div>
 
-      <a class="scroll-cue" href="#about">Climb <span aria-hidden="true">↓</span></a>
+      <a class="scroll-cue" href="#intro">Scroll <span aria-hidden="true">↓</span></a>
     </section>
 
-    <!-- ───────── About · troposphere ───────── -->
-    <section class="band" id="about" data-alt="11">
-      <p class="band-label"><span>Troposphere</span> 0–11 km</p>
-      <div class="plate plate-about reveal">
-        <div class="plate-head"><span>About</span><span>17.385° N, 78.487° E</span></div>
-        <div class="about-grid">
-          <div class="monogram" role="img" aria-label="Monogram VV, placeholder for a portrait photo">
-            <span>VV</span>
-            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" /><path d="M50 4 V14 M50 86 V96 M4 50 H14 M86 50 H96" /></svg>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Aeronautics</span><i>/</i><span>Orbital mechanics</span><i>/</i><span>3D modelling</span><i>/</i><span>Web tools</span><i>/</i>
+        <span>Aeronautics</span><i>/</i><span>Orbital mechanics</span><i>/</i><span>3D modelling</span><i>/</i><span>Web tools</span><i>/</i>
+      </div>
+    </div>
+
+    <section class="section wrap" id="intro">
+      <p class="label">Hello</p>
+      <p class="statement" data-split="words-scrub">I'm Vishwak, a student with a deep interest in aeronautical engineering and a habit of building things from scratch: aircraft performance tools, an orbital mechanics game and web apps that run on real physics.</p>
+      <a class="more" href="/about/">More about me <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="section wrap" id="work">
+      <p class="label">Selected work</p>
+      <h2 class="h2" data-split="chars">Things I've built</h2>
+      <div class="work">
+        <article class="work-item">
+          <a class="work-media" href="/projects/aircraft-performance-calculator/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/calc-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">01 / Aerodynamics</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator</a></h3>
+            <p data-split="lines">Lift, drag, L/D, thrust-to-weight and Breguet range from real aerospace equations, with air density from the ISA atmosphere model.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>ISA model</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/aircraft-performance-calculator/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://aeronautical-calculator.vercel.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
           </div>
-          <div class="about-copy">
-            <h2>Who I am</h2>
-            <p>I'm a student with a deep interest in <strong>aeronautical engineering</strong> and a habit of building things from scratch. Whether it's an aircraft performance tool, an orbital mechanics simulator or a web app — I like turning ideas into something real.</p>
-            <p>I model in <strong>Fusion 360, Blender and TinkerCAD</strong>, and I build for the web with HTML, CSS and JavaScript. Right now I'm exploring pathways into aerospace engineering.</p>
+        </article>
+        <article class="work-item">
+          <a class="work-media" href="/projects/exorbit/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/exorbit-play.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">02 / Orbital mechanics</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/exorbit/">Exorbit</a></h3>
+            <p data-split="lines">A satellite gravity game on a custom Newtonian physics engine: orbit planets, collect data, manage fuel and heat, unlock upgrades.</p>
+            <ul class="tags"><li>HTML5 Canvas</li><li>JavaScript</li><li>Physics engine</li><li>Web Audio</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/exorbit/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://exorbit-beta.vercel.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
           </div>
+        </article>
+        <article class="work-item">
+          <a class="work-media" href="/projects/cricscore/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/cric-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">03 / Product</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/cricscore/">CricScore</a></h3>
+            <p data-split="lines">Ball-by-ball scoring with free-hit logic, extras, player career stats, undo and an admin PIN, saved offline on your phone.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>localStorage</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/cricscore/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://cricscore-eta.vercel.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="toolkit">
+      <p class="label">Toolkit</p>
+      <div class="split">
+        <div>
+          <h2 class="h2" data-split="chars">What I work with</h2>
+          <p class="lede" data-split="lines" style="margin-top:18px">Equations first, then code and models: the theory and tools behind everything on this site.</p>
+          <a class="more" href="/skills/">All skills <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="plate" data-reveal="up">
+          <div class="plate-head"><span>Spec sheet</span><span>short version</span></div>
+          <table class="spec">
+            <tbody>
+              <tr><th scope="row">Engineering</th><td><ul><li class="chip">Aerodynamics</li><li class="chip">ISA atmosphere</li><li class="chip">Orbital mechanics</li></ul></td></tr>
+              <tr><th scope="row">Modelling</th><td><ul><li class="chip">Fusion 360</li><li class="chip">Blender</li><li class="chip">TinkerCAD</li></ul></td></tr>
+              <tr><th scope="row">Code</th><td><ul><li class="chip">HTML / CSS / JS</li><li class="chip">Python</li></ul></td></tr>
+              <tr><th scope="row">Ship</th><td><ul><li class="chip">Git &amp; GitHub</li><li class="chip">Vercel</li><li class="chip">Netlify</li></ul></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- ───────── Skills · stratosphere ───────── -->
-    <section class="band" id="skills" data-alt="50">
-      <p class="band-label"><span>Stratosphere</span> 11–50 km</p>
-      <div class="plate reveal">
-        <div class="plate-head"><span>Spec sheet</span><span>What I work with</span></div>
-        <h2 class="visually-hidden">Skills</h2>
-        <table class="spec">
-          <tbody>
-            <tr>
-              <th scope="row">Design &amp; modelling</th>
-              <td><ul><li>Fusion 360</li><li>Blender</li><li>TinkerCAD</li></ul></td>
-              <td class="spec-note">Parts, assemblies and renders</td>
-            </tr>
-            <tr>
-              <th scope="row">Engineering</th>
-              <td><ul><li>Aerodynamics</li><li>ISA atmosphere</li><li>Orbital mechanics</li></ul></td>
-              <td class="spec-note">Applied in the projects below</td>
-            </tr>
-            <tr>
-              <th scope="row">Code</th>
-              <td><ul><li>HTML / CSS / JS</li><li>Python</li></ul></td>
-              <td class="spec-note">Simulators and tools in the browser</td>
-            </tr>
-            <tr>
-              <th scope="row">Ship</th>
-              <td><ul><li>Git &amp; GitHub</li><li>Vercel</li><li>Netlify</li></ul></td>
-              <td class="spec-note">Everything here is live</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ───────── Projects · Kármán line ───────── -->
-    <section class="band" id="projects" data-alt="100">
-      <p class="band-label"><span>Kármán line</span> 100 km</p>
-      <h2 class="band-title reveal">Things I've built</h2>
-
-      <div class="projects">
-        <article class="plate project reveal" data-tilt>
-          <div class="plate-head"><span>Aircraft Performance Calculator</span><span>fig. 2 — lift curve</span></div>
-          <figure class="project-fig">
-            <svg class="lift-fig" viewBox="0 0 320 180" role="img" aria-label="Lift coefficient rising linearly with angle of attack, peaking at 13 degrees, then dropping after stall">
-              <g class="axis"><path d="M28 152 V18 M28 127.4 H306" /><path d="M74.3 127.4 v4 M190.2 127.4 v4 M306 127.4 v4 M28 66 h-4" /></g>
-              <g class="axis-text">
-                <text x="74.3" y="143">0°</text><text x="190.2" y="143">10°</text><text x="300" y="143">20°</text>
-                <text x="20" y="69" text-anchor="end">1.0</text><text x="306" y="162" text-anchor="end">α</text><text x="34" y="22">C<tspan baseline-shift="sub" font-size="7">L</tspan></text>
-              </g>
-              <path class="lift-line" pathLength="1" d="M28.0 139.8 L224.9 34.6 L236.5 46.8 L248.1 55.0 L259.7 60.5 L271.3 64.2 L282.8 66.7 L294.4 68.3 L306.0 69.5" />
-              <text class="stall-tag" x="224.9" y="26" text-anchor="middle">stall 13°</text>
-              <circle class="lift-dot" r="4.5" cx="132.3" cy="84.1" />
-            </svg>
-            <figcaption>The dot tracks the angle of attack set in the hero.</figcaption>
-          </figure>
-          <p>Interactive aerodynamic calculator — lift, drag, L/D ratio, thrust-to-weight and Breguet range using real aerospace equations and the ISA atmosphere model.</p>
-          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>ISA model</li></ul>
-          <a class="project-link" href="https://aeronautical-calculator.vercel.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="plate project reveal" data-tilt>
-          <div class="plate-head"><span>Exorbit</span><span>fig. 3 — Kepler's second law</span></div>
-          <figure class="project-fig">
-            <svg class="orbit-fig" viewBox="0 0 320 190" role="img" aria-label="Satellite on an elliptical orbit sweeping equal areas in equal times, fast at perigee and slow at apogee">
-              <g class="orbit-sweeps"></g>
-              <ellipse class="orbit-path" cx="140" cy="95" rx="118" ry="94.4" />
-              <circle class="orbit-body" cx="210.8" cy="95" r="9" />
-              <circle class="orbit-sat" cx="258" cy="95" r="4" />
-              <text class="orbit-label" x="262" y="182">perigee →</text>
-            </svg>
-            <figcaption>Equal areas in equal times — e = 0.6, solved from Kepler's equation.</figcaption>
-          </figure>
-          <p>Orbital mechanics simulator with real physics — visualise satellite trajectories, orbital transfers and gravitational dynamics in the browser.</p>
-          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Physics engine</li></ul>
-          <a class="project-link" href="https://exorbit-beta.vercel.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="plate project reveal" data-tilt>
-          <div class="plate-head"><span>CricScore</span><span>fig. 4 — sample over</span></div>
-          <figure class="project-fig">
-            <div class="over" role="img" aria-label="Illustrative over: one, four, no-ball, a six off the free hit, dot, two, one — fifteen runs">
-              <div class="over-board"><span>Over 17</span><span data-over-total>15 runs</span></div>
-              <ol class="over-balls">
-                <li>1</li><li>4</li><li class="nb">NB</li><li class="fh">6</li><li>•</li><li>2</li><li>1</li>
-              </ol>
-              <p class="over-flag" data-over-flag>Free hit</p>
-            </div>
-            <figcaption>Illustrative over — no-ball, then a free hit, scored ball by ball.</figcaption>
-          </figure>
-          <p>Ball-by-ball cricket scoring app with player career stats, free-hit logic, undo support and admin PIN protection.</p>
-          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>localStorage</li></ul>
-          <a class="project-link" href="https://cricscore-eta.vercel.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="plate project project-next reveal">
-          <div class="plate-head"><span>Next build</span><span>in the hangar</span></div>
-          <p class="next-copy">More projects in the works.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ───────── Contact · low Earth orbit ───────── -->
-    <section class="band band-contact" id="contact" data-alt="408">
-      <p class="band-label"><span>Low Earth orbit</span> 408 km</p>
-      <div class="plate plate-contact reveal">
+    <section class="section wrap" id="contact">
+      <p class="label">Contact</p>
+      <div class="plate" data-reveal="up">
         <div class="plate-head"><span>Contact</span><span>channel open</span></div>
         <div class="contact-grid">
           <div>
-            <h2>Get in touch</h2>
-            <p>Open to collaborations, feedback, or just a good conversation about planes and engineering.</p>
+            <h2 class="h2" data-split="chars">Get in touch</h2>
+            <p data-split="lines">Open to collaborations, feedback, or just a good conversation about planes and engineering.</p>
             <a class="contact-mail" href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a>
           </div>
-          <form class="form" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+          <form class="form" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact" />
             <p class="visually-hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
             <label class="field"><span>Name</span><input name="name" autocomplete="name" required /></label>
             <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
-            <label class="field"><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+            <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
             <button class="btn btn-solid" type="submit">Send message</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
+    <div class="earth-room" aria-hidden="true"></div>
   </main>
 
   <footer class="foot">
-    <p>© 2026 Vishwak Vemuru · built from scratch</p>
-    <p class="credits">3D models: <a href="https://github.com/nasa/NASA-3D-Resources">NASA 3D Resources</a> · Earth textures: <a href="https://www.solarsystemscope.com/textures/">Solar System Scope</a>, CC BY 4.0</p>
-    <p><a href="/privacy.html">Privacy</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a></p>
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
   </footer>
 
-  <script type="module" src="/assets/js/main.js"></script>
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+  <script type="module" src="/assets/js/home.js"></script>
 </body>
 </html>

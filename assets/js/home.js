@@ -1,0 +1,98 @@
+// Home page: the hero's live wing readout and the 3D backdrop.
+import { aeroState } from './aero.js';
+
+const root = document.documentElement;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+// Shared with the 3D scene: angle of attack, scroll progress (0 top → 1 bottom), pointer
+const state = { alpha: 5, s: 0, px: 0, py: 0 };
+let scene = null;
+const invalidate = () => scene && scene.invalidate();
+
+/* ───────── Hero HUD: angle of attack → C_L, C_D, L/D ───────── */
+const slider = document.getElementById('alpha');
+const hud = Object.fromEntries([...document.querySelectorAll('[data-hud]')].map((el) => [el.dataset.hud, el]));
+let userSetAlpha = false;
+
+function setAlpha(a, fromSlider = false) {
+  a = Math.round(Math.min(20, Math.max(-4, a)) * 2) / 2;
+  state.alpha = a;
+  if (!fromSlider) slider.value = a;
+  const r = aeroState(a);
+  hud.alpha.textContent = `${a.toFixed(1)}°`;
+  hud.cl.textContent = r.cl.toFixed(2);
+  hud.cd.textContent = r.cd.toFixed(3);
+  hud.ld.textContent = r.ld.toFixed(1);
+  hud.stall.hidden = !r.stalled;
+  invalidate();
+}
+slider.addEventListener('input', () => { userSetAlpha = true; setAlpha(parseFloat(slider.value), true); });
+setAlpha(parseFloat(slider.value) || 5);
+
+const heroEl = document.querySelector('.hero');
+window.addEventListener('pointermove', (e) => {
+  state.px = (e.clientX / innerWidth) * 2 - 1;
+  state.py = (e.clientY / innerHeight) * 2 - 1;
+  if (!finePointer || userSetAlpha) return;
+  // Only the open sky steers the wing, not the buttons, header or readout
+  if (scrollY > innerHeight * 0.5 || e.target.closest('a, button, input, .hud, .nav')) return;
+  const rect = heroEl.getBoundingClientRect();
+  const v = 1 - (e.clientY - rect.top) / rect.height; // 0 bottom → 1 top
+  const next = Math.round((-2 + v * 20) * 2) / 2;
+  if (next !== state.alpha) setAlpha(next);
+}, { passive: true });
+
+// Touch devices: let the wing breathe through its range until someone uses the slider
+if (!finePointer && !reducedMotion) {
+  const t0 = performance.now();
+  const breathe = () => {
+    if (userSetAlpha) return;
+    if (scrollY < innerHeight) setAlpha(6 + 6 * Math.sin((performance.now() - t0) / 1600));
+    setTimeout(breathe, 150);
+  };
+  setTimeout(breathe, 1500);
+}
+
+/* ───────── Scroll progress drives the scene and the sky tint ───────── */
+const SKY = {
+  dark: { top: ['0a1a33', '03050b'], mid: ['133056', '060a14'], glow: '255,110,50', glowA: 0.2 },
+  light: { top: ['c9dcf0', 'bcd1e9'], mid: ['eef4fa', 'd6e3f1'], glow: '255,160,90', glowA: 0.22 },
+};
+const lerp = (a, b, t) => a + (b - a) * t;
+const mixHex = (a, b, t) => {
+  const pa = a.match(/\w\w/g).map((h) => parseInt(h, 16));
+  const pb = b.match(/\w\w/g).map((h) => parseInt(h, 16));
+  return `rgb(${pa.map((v, i) => Math.round(lerp(v, pb[i], t))).join(',')})`;
+};
+
+function onScroll() {
+  const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  const s = Math.min(1, Math.max(0, scrollY / max));
+  state.s = s;
+  const k = Math.min(1, s / 0.75);
+  const sky = SKY[root.dataset.theme === 'light' ? 'light' : 'dark'];
+  root.style.setProperty('--sky-top', mixHex(sky.top[0], sky.top[1], k));
+  root.style.setProperty('--sky-mid', mixHex(sky.mid[0], sky.mid[1], k));
+  root.style.setProperty('--sky-glow', `rgba(${sky.glow},${(sky.glowA * (1 - Math.min(1, s / 0.45))).toFixed(3)})`);
+  invalidate();
+}
+onScroll();
+addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', onScroll);
+
+document.addEventListener('themechange', (e) => {
+  onScroll();
+  if (scene) scene.setTheme(e.detail);
+});
+
+/* ───────── 3D scene (progressive: the page works without it) ───────── */
+const saveData = navigator.connection && navigator.connection.saveData;
+const lowPower = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4 || innerWidth < 700;
+if (saveData) {
+  root.classList.add('no-webgl');
+} else {
+  import('./scene.js')
+    .then(({ startScene }) => { scene = startScene(document.getElementById('sky'), state, { lowPower, reducedMotion, theme: root.dataset.theme }); })
+    .catch((err) => { console.warn('3D scene unavailable:', err); root.classList.add('no-webgl'); });
+}

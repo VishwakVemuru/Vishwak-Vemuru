@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exorbit · Vishwak Vemuru</title>
+  <meta name="description" content="A satellite gravity game. Steer between planets, let their gravity pull you into orbit, collect data and keep your fuel alive." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/exorbit/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/exorbit/" />
+  <meta property="og:title" content="Exorbit · Vishwak Vemuru" />
+  <meta property="og:description" content="A satellite gravity game. Steer between planets, let their gravity pull you into orbit, collect data and keep your fuel alive." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/butterfly-1920.webp); --space-sm: url(/assets/img/space/butterfly-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">Exorbit</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>Exorbit</h1>
+      <p class="lede" data-split="lines">A satellite gravity game. Steer between planets, let their gravity pull you into orbit, collect data and keep your fuel alive.</p>
+      <div class="btns" data-reveal="up" style="margin-top:26px">
+        <a class="btn btn-solid" href="https://exorbit-beta.vercel.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-line" href="https://github.com/VishwakVemuru/Exorbit" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="facts" data-reveal="up" style="max-width:640px">
+        <div><dt>Type</dt><dd>Orbital mechanics</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, physics and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML5 Canvas, JavaScript, Physics engine, Web Audio</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap">
+      <figure class="shot shot-hero" data-reveal="image">
+          <img src="/assets/img/projects/exorbit-play.webp" width="1440" height="900" alt="Exorbit in play: the satellite drifting between rock and ice planets, with score, fuel and a minimap" loading="lazy" decoding="async" />
+          <figcaption>What you see when you open it</figcaption>
+        </figure>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Overview</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The idea</h2>
+        <div class="prose">
+          <p data-split="lines">Exorbit started as a way to see the orbital physics behind real satellite missions. It grew into a game: you fly a small satellite through a field of planets, and their gravity does most of the work.</p>
+          <p data-split="lines">Point and the satellite turns, hold to fire the engine, and get close to a planet to be pulled in. Circle it and you're in orbit, collecting data that turns into fuel. Spin too hard and the heat climbs. Run out of fuel and the mission is over.</p>
+          <p data-split="lines">Trajectories come from Newtonian gravity and numerical integration in a custom physics engine, so ellipses, slingshots and escapes behave like the real thing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Features</p>
+      <h2 class="h2" data-split="chars">What it does</h2>
+      <ul class="features" data-reveal="up"><li><strong>Steer and thrust</strong>Point to turn the satellite, hold to fire the engine.</li><li><strong>Gravity you can feel</strong>Planets pull like magnets; circle one and you are orbiting.</li><li><strong>Data → fuel</strong>Orbiting collects glowing data, which converts into fuel automatically.</li><li><strong>Heat</strong>Spinning too much overheats the satellite.</li><li><strong>Levels and free roam</strong>Mission levels with objectives and rewards, or explore freely.</li><li><strong>Upgrades</strong>Coins buy a bigger fuel tank, more efficient thrust and better data collection.</li><li><strong>Mission guide</strong>A nine-step tutorial that teaches you to fly.</li><li><strong>Minimap and wave modes</strong>Track planets around you and switch data-collection modes.</li><li><strong>Sound</strong>Built with the Web Audio API.</li></ul>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Under the hood</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The maths</h2>
+        <div>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Gravitational force</th><td>F = G · m<sub>1</sub> · m<sub>2</sub> / r²</td></tr><tr><th scope="row">Orbital velocity</th><td>v = √(GM / r)</td></tr><tr><th scope="row">Escape velocity</th><td>v<sub>e</sub> = √(2GM / r)</td></tr><tr><th scope="row">Orbital period</th><td>T = 2π · √(a³ / GM)</td></tr></tbody></table>
+          <p class="fig-cap" style="border:0;padding-left:0">Position and velocity are stepped forward with numerical integration every frame.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Screens</p>
+      <h2 class="h2" data-split="chars">A closer look</h2>
+      <div class="gallery">
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/exorbit-start.webp" width="1440" height="900" alt="Exorbit title screen with Levels, Free Roam and How to Play buttons" loading="lazy" decoding="async" />
+          <figcaption>Title screen</figcaption>
+        </figure>
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/exorbit-mobile.webp" width="780" height="1688" alt="Exorbit title screen on a phone" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
+        </figure>
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/exorbit-guide.webp" width="1440" height="900" alt="Mission guide step 1: your satellite, with fuel, data and heat explained" loading="lazy" decoding="async" />
+          <figcaption>The mission guide</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Roadmap</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">Coming next</h2>
+        <ul class="roadmap" data-reveal="up">
+          <li>Multi-body simulation</li>
+          <li>Hohmann transfer visualiser</li>
+          <li>Real planet and moon data presets</li>
+          <li>Export orbital data as CSV</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <nav class="pager" aria-label="More projects">
+        <a href="/projects/aircraft-performance-calculator/"><small>← Previous</small><span>Calculator</span></a>
+        <a href="/projects/cricscore/"><small>Next →</small><span>CricScore</span></a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

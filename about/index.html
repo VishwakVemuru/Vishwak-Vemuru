@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About · Vishwak Vemuru</title>
+  <meta name="description" content="About Vishwak Vemuru: a student from Hyderabad with a deep interest in aeronautical engineering who builds physics-driven tools from scratch." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/about/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/about/" />
+  <meta property="og:title" content="About · Vishwak Vemuru" />
+  <meta property="og:description" content="About Vishwak Vemuru: a student from Hyderabad with a deep interest in aeronautical engineering who builds physics-driven tools from scratch." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/eagle-1920.webp); --space-sm: url(/assets/img/space/eagle-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/" aria-current="page">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <span aria-current="page">About</span></p>
+      <h1 class="page-title" data-split="chars" data-intro>About <span class="outline">me</span></h1>
+      <p class="lede" data-split="lines">I'm Vishwak Vemuru, a student from Hyderabad who wants to work in aerospace and builds tools that apply real physics.</p>
+    </header>
+
+    <section class="section wrap">
+      <div class="split">
+        <div data-reveal="up">
+          <div class="monogram" role="img" aria-label="Monogram VV">
+            <span>VV</span>
+            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" /><path d="M50 4 V14 M50 86 V96 M4 50 H14 M86 50 H96" /></svg>
+          </div>
+          <dl class="facts">
+            <div><dt>Based in</dt><dd>Hyderabad, India</dd></div>
+            <div><dt>Focus</dt><dd>Aeronautical engineering</dd></div>
+            <div><dt>Builds with</dt><dd>HTML, CSS, JavaScript, Python</dd></div>
+            <div><dt>Models in</dt><dd>Fusion 360, Blender, TinkerCAD</dd></div>
+            <div><dt>Status</dt><dd>Open to opportunities</dd></div>
+          </dl>
+        </div>
+        <div class="prose">
+          <p class="label">Who I am</p>
+          <p data-split="lines">I'm a student with a deep interest in aeronautical engineering and a habit of building things from scratch. Whether it's an aircraft performance tool, an orbital mechanics game or a web app, I like turning ideas into something real that other people can use.</p>
+          <p data-split="lines">I model in Fusion 360, Blender and TinkerCAD, and I build for the web with plain HTML, CSS and JavaScript. Every project on this site is written from scratch, with no frameworks or physics libraries, so I understand every equation that's running.</p>
+          <p data-split="lines">Right now I'm exploring pathways into aerospace engineering, and I'm open to opportunities, collaborations and feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">What drives me</p>
+      <h2 class="h2" data-split="chars">Three things I keep coming back to</h2>
+      <div class="cols">
+        <div class="plate" data-reveal="up">
+          <p class="h3">Flight</p>
+          <p>How lift, drag and thrust decide what an aircraft can do: how far it flies, how fast it climbs, how efficient it is. The <a href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator</a> came from wanting to play with those numbers directly.</p>
+        </div>
+        <div class="plate" data-reveal="up">
+          <p class="h3">Orbits</p>
+          <p><a href="/projects/exorbit/">Exorbit</a> started as a way to see the orbital physics behind real satellite missions: gravity, orbital velocity and escape velocity, turned into a game you can actually fly.</p>
+        </div>
+        <div class="plate" data-reveal="up">
+          <p class="h3">Real problems</p>
+          <p><a href="/projects/cricscore/">CricScore</a> exists because scoring local cricket matches on a phone was harder than it should be, especially without internet or a complicated app.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">How I build</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">Equations first, then code</h2>
+        <div class="prose">
+          <p data-split="lines">Each project starts from the physics: the lift and drag equations, the Breguet range equation, Newton's law of gravitation. Then it becomes something interactive, with sliders, a game loop or a scoreboard, so the maths turns into something you can feel.</p>
+          <p data-split="lines">I keep the stack small on purpose: vanilla JavaScript, Canvas and the browser. Everything ships as a static site, and everything here is live.</p>
+          <div class="btns" data-reveal="up" style="margin-top:26px">
+            <a class="btn btn-solid" href="/projects/">See the projects</a>
+            <a class="btn btn-line" href="/contact/">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>
