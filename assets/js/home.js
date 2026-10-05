@@ -1,54 +1,36 @@
-// Home page: the hero's live wing readout and the 3D backdrop.
-import { aeroState } from './aero.js';
+// Home page: the 3D backdrop and what drives it.
 
 const root = document.documentElement;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-// Shared with the 3D scene: angle of attack, scroll progress (0 top → 1 bottom), pointer
+// Shared with the 3D scene: angle of attack (degrees), scroll progress (0 top → 1 bottom), pointer
 const state = { alpha: 5, s: 0, px: 0, py: 0 };
 let scene = null;
 const invalidate = () => scene && scene.invalidate();
 
-/* ───────── Hero HUD: angle of attack → C_L, C_D, L/D ───────── */
-const slider = document.getElementById('alpha');
-const hud = Object.fromEntries([...document.querySelectorAll('[data-hud]')].map((el) => [el.dataset.hud, el]));
-let userSetAlpha = false;
-
-function setAlpha(a, fromSlider = false) {
-  a = Math.round(Math.min(20, Math.max(-4, a)) * 2) / 2;
-  state.alpha = a;
-  if (!fromSlider) slider.value = a;
-  const r = aeroState(a);
-  hud.alpha.textContent = `${a.toFixed(1)}°`;
-  hud.cl.textContent = r.cl.toFixed(2);
-  hud.cd.textContent = r.cd.toFixed(3);
-  hud.ld.textContent = r.ld.toFixed(1);
-  hud.stall.hidden = !r.stalled;
+/* ───────── The wing pitches with the pointer (or gently by itself on touch screens) ───────── */
+const setAlpha = (a) => {
+  state.alpha = Math.min(16, Math.max(-2, a));
   invalidate();
-}
-slider.addEventListener('input', () => { userSetAlpha = true; setAlpha(parseFloat(slider.value), true); });
-setAlpha(parseFloat(slider.value) || 5);
+};
 
 const heroEl = document.querySelector('.hero');
 window.addEventListener('pointermove', (e) => {
   state.px = (e.clientX / innerWidth) * 2 - 1;
   state.py = (e.clientY / innerHeight) * 2 - 1;
-  if (!finePointer || userSetAlpha) return;
-  // Only the open sky steers the wing, not the buttons, header or readout
-  if (scrollY > innerHeight * 0.5 || e.target.closest('a, button, input, .hud, .nav')) return;
+  if (!finePointer) return;
+  // Only the open sky steers the wing, not the buttons or header
+  if (scrollY > innerHeight * 0.5 || e.target.closest('a, button, .nav')) return;
   const rect = heroEl.getBoundingClientRect();
   const v = 1 - (e.clientY - rect.top) / rect.height; // 0 bottom → 1 top
-  const next = Math.round((-2 + v * 20) * 2) / 2;
-  if (next !== state.alpha) setAlpha(next);
+  setAlpha(-1 + v * 15);
 }, { passive: true });
 
-// Touch devices: let the wing breathe through its range until someone uses the slider
 if (!finePointer && !reducedMotion) {
   const t0 = performance.now();
   const breathe = () => {
-    if (userSetAlpha) return;
-    if (scrollY < innerHeight) setAlpha(6 + 6 * Math.sin((performance.now() - t0) / 1600));
+    if (scrollY < innerHeight) setAlpha(6 + 5 * Math.sin((performance.now() - t0) / 1600));
     setTimeout(breathe, 150);
   };
   setTimeout(breathe, 1500);

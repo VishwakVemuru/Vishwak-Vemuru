@@ -236,15 +236,15 @@ main { position: relative; z-index: 1; }
 /* ───────── Home hero ───────── */
 .hero {
   position: relative; min-height: 100vh; min-height: 100svh;
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  grid-template-rows: 1fr auto; align-items: end; gap: 32px;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr auto; align-items: end;
   max-width: 1280px; margin: 0 auto;
   padding: 120px var(--gutter) 72px;
 }
-.hero-copy { grid-row: 2; max-width: 760px; }
+.hero-copy { grid-row: 2; min-width: 0; }
 .hero-name {
   font-family: var(--display); font-weight: 800; font-stretch: 125%;
-  font-size: clamp(2.9rem, 9.4vw, 8rem); line-height: 0.86; letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 11vw, 8.6rem); line-height: 0.86; letter-spacing: -0.02em;
   text-transform: uppercase; margin: 14px 0 22px;
 }
 .hero-name > span { display: block; }
@@ -253,22 +253,8 @@ main { position: relative; z-index: 1; }
 .hero-copy .btns { margin-top: 28px; }
 
 .hero-fallback { display: none; }
-.no-webgl .hero-fallback { display: block; grid-column: 2; grid-row: 1; align-self: center; width: 100%; color: var(--text-2); }
+.no-webgl .hero-fallback { display: block; grid-row: 1; justify-self: end; align-self: center; width: min(100%, 520px); color: var(--text-2); }
 .no-webgl .fallback-fin { stroke: var(--accent); }
-
-.hud {
-  grid-column: 2; grid-row: 2; justify-self: end; width: min(100%, 320px);
-  font-family: var(--mono); font-size: 0.75rem; color: var(--text-2);
-  background: var(--plate); border: 1px solid var(--line); padding: 16px 18px;
-}
-.hud-title { color: var(--text); margin-bottom: 10px; }
-.slider { display: grid; gap: 6px; }
-.slider input { width: 100%; accent-color: var(--accent); min-height: 28px; cursor: pointer; }
-.readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0 8px; }
-.readout dt { color: var(--text-3); }
-.readout dd { color: var(--text); font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
-.stall { color: var(--accent-text); font-weight: 500; margin-bottom: 6px; }
-.note { font-size: 0.6875rem; line-height: 1.5; }
 
 .scroll-cue {
   position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%);
@@ -278,10 +264,7 @@ main { position: relative; z-index: 1; }
 @keyframes bob { 50% { transform: translate(-50%, 6px); } }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; grid-template-rows: 34vh auto auto; padding-top: 90px; padding-bottom: 72px; }
-  .hero-copy { grid-row: 2; }
-  .hud { grid-column: 1; grid-row: 3; justify-self: stretch; width: 100%; }
-  .no-webgl .hero-fallback { grid-column: 1; }
+  .hero { grid-template-rows: 34vh auto; padding-top: 90px; padding-bottom: 72px; }
   .scroll-cue { display: none; }
 }
 
@@ -401,17 +384,6 @@ main { position: relative; z-index: 1; }
 .pager span { font-family: var(--display); font-weight: 800; font-stretch: 120%; text-transform: uppercase; font-size: clamp(1.2rem, 3vw, 2rem); }
 .pager a:hover span { color: var(--accent-text); }
 
-/* Figures */
-.figure { width: 100%; height: auto; background: var(--well); border: 1px solid var(--line); }
-.axis { stroke: var(--line-strong); fill: none; }
-.axis-text, .orbit-label { font-family: var(--mono); font-size: 9px; fill: var(--text-2); }
-.lift-line { fill: none; stroke: var(--text); stroke-width: 1.8; }
-.lift-dot { fill: var(--accent); }
-.stall-tag { font-family: var(--mono); font-size: 9px; fill: var(--accent-text); }
-.orbit-path { fill: none; stroke: var(--line-strong); stroke-dasharray: 3 4; }
-.orbit-body { fill: var(--planet); stroke: var(--text-2); stroke-width: 0.8; }
-.orbit-sat { fill: var(--accent); }
-
 /* ───────── Contact ───────── */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 5vw, 56px); }
 .contact-grid > div > p { color: var(--text-2); margin-top: 14px; }
@@ -483,7 +455,7 @@ html.theme-vt::view-transition-new(root) { z-index: 2; }
 /* ───────── Motion (motion.js) ───────── */
 /* Hide split text until it has been split, so it never flashes; motion.js and a 3 s failsafe remove this */
 .motion-pending [data-split], .motion-pending [data-reveal] { visibility: hidden; }
-.split-mask { overflow: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; perspective: 700px; }
+.split-mask { overflow-x: visible; overflow-y: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; perspective: 700px; }
 .earth-room { height: 38vh; }
 
 @media (prefers-reduced-motion: reduce) {
