@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroCatalogue · Vishwak Vemuru</title>
+  <meta name="description" content="A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/aerocatalogue/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/aerocatalogue/" />
+  <meta property="og:title" content="AeroCatalogue · Vishwak Vemuru" />
+  <meta property="og:description" content="A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/eagle-1920.webp); --space-sm: url(/assets/img/space/eagle-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">AeroCatalogue</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>AeroCatalogue</h1>
+      <p class="lede" data-split="lines">A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type.</p>
+      <div class="btns" data-reveal="up" style="margin-top:26px">
+        <a class="btn btn-solid" href="https://aerocatalogue.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+
+      </div>
+      <dl class="facts" data-reveal="up" style="max-width:640px">
+        <div><dt>Type</dt><dd>Reference catalogue</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, data and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Aircraft database</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap">
+      <figure class="shot shot-hero" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-grid.webp" width="1440" height="900" alt="AeroCatalogue grid of aircraft photo cards: A220, A319neo, A321neo, B737 and more, each with range, seats and cruise speed" loading="lazy" decoding="async" />
+          <figcaption>The catalogue: photo cards with range, seats and cruise speed</figcaption>
+        </figure>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Overview</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The idea</h2>
+        <div class="prose">
+          <p data-split="lines">A reference shelf for aircraft: 123 types, from the A220 and 737 MAX to helicopters and seaplanes, each with the numbers that matter when you compare them.</p>
+          <p data-split="lines">Search by name, manufacturer or category, narrow it down with one tap, and open any card for its spec sheet and a link to read more. The same database powers <a href="/projects/aeromatch/">AeroMatch</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Features</p>
+      <h2 class="h2" data-split="chars">What it does</h2>
+      <ul class="features" data-reveal="up"><li><strong>123 aircraft</strong>Airliners, regional jets, turboprops, freighters, business jets, military transports, seaplanes and helicopters.</li><li><strong>Nine categories</strong>Filter to narrow-body, wide-body, regional, turboprop and bush, cargo, bizjet and VIP, military, seaplane or helicopter.</li><li><strong>Search</strong>Find a type by name, manufacturer or category as you type.</li><li><strong>Spec sheets</strong>Range, seats, cargo, cruise speed, runway needed and maximum take-off weight for every aircraft.</li><li><strong>Read more</strong>Each aircraft links to its Wikipedia article.</li><li><strong>Works on phones</strong>The grid reflows to fit a phone screen.</li></ul>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Under the hood</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The data</h2>
+        <div>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Range</th><td>km</td></tr><tr><th scope="row">Seats and cargo</th><td>passengers, kg and m³</td></tr><tr><th scope="row">Cruise speed</th><td>km/h</td></tr><tr><th scope="row">Runway needed</th><td>m, plus surface: paved, unpaved or water</td></tr><tr><th scope="row">MTOW</th><td>maximum take-off weight</td></tr><tr><th scope="row">Roles</th><td>the missions each aircraft is suited to</td></tr></tbody></table>
+          <p class="fig-cap" style="border:0;padding-left:0">What each of the 123 entries stores.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Screens</p>
+      <h2 class="h2" data-split="chars">A closer look</h2>
+      <div class="gallery">
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-detail.webp" width="1440" height="900" alt="AeroCatalogue spec sheet for the A220-100: 5,500 km range, 110 seats, 830 km/h cruise, 1,500 m runway" loading="lazy" decoding="async" />
+          <figcaption>A spec sheet</figcaption>
+        </figure>
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-mobile.webp" width="780" height="1688" alt="AeroCatalogue on a phone: category filters and aircraft cards" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
+        </figure>
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-title.webp" width="1440" height="900" alt="AeroCatalogue title screen: 123 aircraft, 9 categories, 16 helicopters, 8 seaplanes" loading="lazy" decoding="async" />
+          <figcaption>The title screen</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <nav class="pager" aria-label="More projects">
+        <a href="/projects/exorbit/"><small>← Previous</small><span>Exorbit</span></a>
+        <a href="/projects/cricscore/"><small>Next →</small><span>CricScore</span></a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

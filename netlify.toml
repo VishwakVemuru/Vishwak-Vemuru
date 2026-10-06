@@ -1,0 +1,31 @@
+[build]
+  publish = "."
+
+# Old single-page URLs
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy/"
+  status = 301
+
+[[redirects]]
+  from = "/thanks.html"
+  to = "/thanks/"
+  status = 301
+
+# Large, rarely-changing media can be cached for a week. CSS/JS/HTML keep Netlify's
+# default (always revalidate) so visitors never mix an old stylesheet with new pages.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/models/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

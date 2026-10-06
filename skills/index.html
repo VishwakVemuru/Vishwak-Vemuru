@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills · Vishwak Vemuru</title>
+  <meta name="description" content="Skills of Vishwak Vemuru: aerodynamics, the ISA atmosphere, orbital mechanics, 3D modelling in Fusion 360 and Blender, and front-end web development." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/skills/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/skills/" />
+  <meta property="og:title" content="Skills · Vishwak Vemuru" />
+  <meta property="og:description" content="Skills of Vishwak Vemuru: aerodynamics, the ISA atmosphere, orbital mechanics, 3D modelling in Fusion 360 and Blender, and front-end web development." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/veil-1920.webp); --space-sm: url(/assets/img/space/veil-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/" aria-current="page">Skills</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/" aria-current="page">Skills</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <span aria-current="page">Skills</span></p>
+      <h1 class="page-title" data-split="chars" data-intro>Skills</h1>
+      <p class="lede" data-split="lines">The theory and the tools, and where I've actually used them.</p>
+    </header>
+
+    <section class="section wrap">
+      <div class="plate" data-reveal="up">
+        <div class="plate-head"><span>Spec sheet</span><span>theory → practice</span></div>
+        <table class="spec">
+          <tbody>
+              <tr><th scope="row">Aerodynamics</th><td><ul><li class="chip">Lift &amp; drag</li><li class="chip">L/D ratio</li><li class="chip">Thrust-to-weight</li><li class="chip">Breguet range</li><li class="chip">Dynamic pressure</li></ul></td><td class="spec-note">Used in the <a href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator</a></td></tr>
+              <tr><th scope="row">Atmosphere</th><td><ul><li class="chip">ISA density model</li></ul></td><td class="spec-note">Air density from altitude in the <a href="/projects/aircraft-performance-calculator/">calculator</a></td></tr>
+              <tr><th scope="row">Orbital mechanics</th><td><ul><li class="chip">Newtonian gravity</li><li class="chip">Orbital velocity</li><li class="chip">Escape velocity</li><li class="chip">Orbital period</li><li class="chip">Numerical integration</li></ul></td><td class="spec-note">The physics engine behind <a href="/projects/exorbit/">Exorbit</a></td></tr>
+              <tr><th scope="row">Aircraft data</th><td><ul><li class="chip">Aircraft specs &amp; categories</li><li class="chip">Multi-criteria scoring</li><li class="chip">Search &amp; filtering</li></ul></td><td class="spec-note">Matching aircraft to missions in <a href="/projects/aeromatch/">AeroMatch</a> and <a href="/projects/aerocatalogue/">AeroCatalogue</a></td></tr>
+              <tr><th scope="row">3D modelling</th><td><ul><li class="chip">Fusion 360</li><li class="chip">Blender</li><li class="chip">TinkerCAD</li></ul></td><td class="spec-note">Modelling and design</td></tr>
+              <tr><th scope="row">Web design</th><td><ul><li class="chip">Responsive layouts</li><li class="chip">Typography &amp; colour</li><li class="chip">Conversion-focused pages</li></ul></td><td class="spec-note">Sites for local businesses in my <a href="/projects/web-design/">web design work</a></td></tr>
+              <tr><th scope="row">Front-end</th><td><ul><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">JavaScript</li><li class="chip">Canvas 2D</li><li class="chip">Web Audio</li></ul></td><td class="spec-note">Every project here, written without frameworks</td></tr>
+              <tr><th scope="row">App logic</th><td><ul><li class="chip">State &amp; undo history</li><li class="chip">localStorage persistence</li><li class="chip">Rules engines</li></ul></td><td class="spec-note">Cricket rules, extras and stats in <a href="/projects/cricscore/">CricScore</a></td></tr>
+              <tr><th scope="row">Programming</th><td><ul><li class="chip">Python</li></ul></td><td class="spec-note">Also in the toolkit</td></tr>
+              <tr><th scope="row">Shipping</th><td><ul><li class="chip">Git &amp; GitHub</li><li class="chip">Vercel</li><li class="chip">Netlify</li></ul></td><td class="spec-note">Every project is deployed and live</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">See them in use</p>
+      <h2 class="h2" data-split="chars">Skills, applied</h2>
+      <div class="btns" data-reveal="up" style="margin-top:28px">
+        <a class="btn btn-line" href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator <span aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/projects/aeromatch/">AeroMatch <span aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/projects/exorbit/">Exorbit <span aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/projects/aerocatalogue/">AeroCatalogue <span aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/projects/cricscore/">CricScore <span aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/projects/web-design/">Web design for local businesses <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

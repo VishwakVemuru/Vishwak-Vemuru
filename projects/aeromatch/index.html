@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroMatch · Vishwak Vemuru</title>
+  <meta name="description" content="An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/aeromatch/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/aeromatch/" />
+  <meta property="og:title" content="AeroMatch · Vishwak Vemuru" />
+  <meta property="og:description" content="An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/carina-1920.webp); --space-sm: url(/assets/img/space/carina-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">AeroMatch</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>AeroMatch</h1>
+      <p class="lede" data-split="lines">An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit.</p>
+      <div class="btns" data-reveal="up" style="margin-top:26px">
+        <a class="btn btn-solid" href="https://aeromatcher.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+
+      </div>
+      <dl class="facts" data-reveal="up" style="max-width:640px">
+        <div><dt>Type</dt><dd>Engineering tool</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, data and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Scoring model</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap">
+      <figure class="shot shot-hero" data-reveal="image">
+          <img src="/assets/img/projects/aeromatch-results.webp" width="1440" height="900" alt="AeroMatch results: the A321neo, A320neo and A321XLR ranked first to third with match scores out of 100" loading="lazy" decoding="async" />
+          <figcaption>Recommendations for a 3,000 km, 150-seat scheduled mission</figcaption>
+        </figure>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Overview</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The idea</h2>
+        <div class="prose">
+          <p data-split="lines">Choosing an aircraft is a trade-off: range against payload, runway length against speed, comfort against operating cost. AeroMatch turns that into a question you can answer in a minute.</p>
+          <p data-split="lines">You describe the mission, from a 3,000 km scheduled route to a ship-deck rescue, and it scores every aircraft and helicopter in a 123-entry database against it. The best fits come back ranked, with a score out of 100 and a plain-English reason for each pick.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Features</p>
+      <h2 class="h2" data-split="chars">What it does</h2>
+      <ul class="features" data-reveal="up"><li><strong>Mission basics</strong>Range, passengers, cargo weight and cargo volume.</li><li><strong>13 mission types</strong>From scheduled airline and cargo to medevac, search and rescue, offshore, heli-skiing and naval.</li><li><strong>Operational limits</strong>Runway length and surface (paved, unpaved or water), hot-and-high, arctic, short-strip or ETOPS conditions.</li><li><strong>Helicopter options</strong>Hover capability and landing zones from full helipads to ship decks and unprepared ground.</li><li><strong>Your priorities</strong>Rank fuel efficiency, comfort, operating cost, range margin and speed in the order that matters to you.</li><li><strong>Explained results</strong>Top picks with a score breakdown and a reason, plus a sortable table of every qualifying aircraft.</li></ul>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Under the hood</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">How it scores</h2>
+        <div>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Range fit</th><td>Needs the route plus a 10 % fuel reserve; extra range scores higher</td></tr><tr><th scope="row">Capacity fit</th><td>Seats, cargo mass and volume, with a penalty for aircraft far too big for the job</td></tr><tr><th scope="row">Runway &amp; surface</th><td>Runway required against runway available, and paved / unpaved / water</td></tr><tr><th scope="row">Terrain</th><td>Hot-and-high, cold, short-strip and ETOPS capability</td></tr><tr><th scope="row">Mission &amp; budget</th><td>Exact or compatible mission roles, and budget tier</td></tr><tr><th scope="row">Priorities</th><td>Speed, efficiency (payload × range) and comfort weighted by your ranking</td></tr></tbody></table>
+          <p class="fig-cap" style="border:0;padding-left:0">Each factor scores 0–100; together they give the match score out of 100.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Screens</p>
+      <h2 class="h2" data-split="chars">A closer look</h2>
+      <div class="gallery">
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aeromatch-start.webp" width="1440" height="900" alt="AeroMatch mission form: range, passengers, cargo, mission type, runway, terrain and priorities" loading="lazy" decoding="async" />
+          <figcaption>Setting up a mission</figcaption>
+        </figure>
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/aeromatch-mobile.webp" width="780" height="1688" alt="AeroMatch mission form on a phone" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <nav class="pager" aria-label="More projects">
+        <a href="/projects/aircraft-performance-calculator/"><small>← Previous</small><span>Calculator</span></a>
+        <a href="/projects/exorbit/"><small>Next →</small><span>Exorbit</span></a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

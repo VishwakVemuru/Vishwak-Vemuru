@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credits · Vishwak Vemuru</title>
+  <meta name="description" content="Credits for the imagery, 3D models and libraries used on this site." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/credits/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/credits/" />
+  <meta property="og:title" content="Credits · Vishwak Vemuru" />
+  <meta property="og:description" content="Credits for the imagery, 3D models and libraries used on this site." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/tarantula-1920.webp); --space-sm: url(/assets/img/space/tarantula-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <span aria-current="page">Credits</span></p>
+      <h1 class="page-title" data-split="chars" data-intro>Credits</h1>
+    </header>
+    <section class="wrap prose">
+      <h2 class="h3">Space imagery (dark mode backgrounds)</h2>
+      <p>Images from the Hubble and James Webb space telescopes, via ESA/Hubble and ESA/Webb under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Resized for the web.</p>
+      <table class="eq"><tbody>
+        <tr><th scope="row">Tarantula Nebula<br /><small>James Webb Space Telescope</small></th><td>NASA, ESA, CSA, STScI, Webb ERO Production Team. <a href="https://esawebb.org/images/weic2212a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Pillars of Creation, Eagle Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA/Hubble and the Hubble Heritage Team. <a href="https://esahubble.org/images/heic1501a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Veil Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA and the Hubble Heritage Team (STScI/AURA). <a href="https://esahubble.org/images/heic1520a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Carina Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA, N. Smith (University of California, Berkeley) and the Hubble Heritage Team (STScI/AURA). <a href="https://esahubble.org/images/heic0707a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Orion Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA, M. Robberto (STScI/ESA) and the Hubble Space Telescope Orion Treasury Project Team. <a href="https://esahubble.org/images/heic0601a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Lagoon Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA, STScI. <a href="https://esahubble.org/images/heic1808a/">Source ↗</a></td></tr>
+        <tr><th scope="row">Butterfly Nebula<br /><small>Hubble Space Telescope</small></th><td>NASA, ESA and the Hubble SM4 ERO Team. <a href="https://esahubble.org/images/heic0910h/">Source ↗</a></td></tr>
+      </tbody></table>
+      <h2 class="h3" style="margin-top:32px">3D models and Earth</h2>
+      <p>Global Hawk and International Space Station models: <a href="https://github.com/nasa/NASA-3D-Resources">NASA 3D Resources</a> (NASA media usage guidelines). Earth day, night and cloud textures: <a href="https://www.solarsystemscope.com/textures/">Solar System Scope</a>, CC BY 4.0, based on NASA imagery.</p>
+      <h2 class="h3" style="margin-top:32px">Libraries and fonts</h2>
+      <p><a href="https://threejs.org/">three.js</a> (MIT), <a href="https://gsap.com/">GSAP</a> with ScrollTrigger and SplitText (GSAP standard license), <a href="https://lenis.darkroom.engineering/">Lenis</a> (MIT). Fonts: Archivo and IBM Plex Mono (SIL Open Font License) via Google Fonts.</p>
+      <h2 class="h3" style="margin-top:32px">Project screenshots</h2>
+      <p>Captured from my own projects: <a href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator</a>, <a href="/projects/exorbit/">Exorbit</a> and <a href="/projects/cricscore/">CricScore</a>.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>

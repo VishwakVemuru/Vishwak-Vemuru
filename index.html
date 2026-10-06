@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishwak Vemuru · aeronautics &amp; builds</title>
+  <meta name="description" content="Vishwak Vemuru, an aeronautical engineering aspirant from Hyderabad building real tools: an aircraft performance calculator, an orbital mechanics game and more." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/" />
+  <meta property="og:title" content="Vishwak Vemuru · aeronautics &amp; builds" />
+  <meta property="og:description" content="Vishwak Vemuru, an aeronautical engineering aspirant from Hyderabad building real tools: an aircraft performance calculator, an orbital mechanics game and more." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+  <script type="importmap">{ "imports": { "three": "/assets/vendor/three.module.min.js" } }</script>
+  <link rel="modulepreload" href="/assets/vendor/three.module.min.js" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/tarantula-1920.webp); --space-sm: url(/assets/img/space/tarantula-960.webp)" aria-hidden="true"></div>
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-split="lines">Hyderabad, India · open to opportunities</p>
+        <h1 class="hero-name" data-split="chars" data-intro><span>Vishwak</span> <span class="outline">Vemuru</span></h1>
+        <p class="lede" data-split="lines">Aeronautical engineering aspirant and builder: turning ideas into real tools, from orbital simulators to aerodynamic calculators.</p>
+        <div class="btns" data-reveal="up">
+          <a class="btn btn-solid" href="/projects/">See the projects</a>
+          <a class="btn btn-line" href="/contact/">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Static aircraft, shown only if WebGL is unavailable -->
+      <svg class="hero-fallback" viewBox="0 0 400 220" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+          <path d="M40 120 C 80 108, 260 100, 350 112 C 362 114, 366 120, 352 124 C 260 134, 90 132, 40 120 Z" />
+          <path d="M170 116 L 120 196 L 150 196 L 230 120" />
+          <path d="M170 112 L 210 50 L 232 50 L 228 108" />
+          <path d="M70 118 L 46 70 L 64 70 L 96 114" class="fallback-fin" />
+          <path d="M78 122 L 52 156 L 68 156 L 104 124" />
+        </g>
+      </svg>
+
+      <a class="scroll-cue" href="#intro">Scroll <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Aeronautics</span><i>/</i><span>Orbital mechanics</span><i>/</i><span>3D modelling</span><i>/</i><span>Web tools</span><i>/</i>
+        <span>Aeronautics</span><i>/</i><span>Orbital mechanics</span><i>/</i><span>3D modelling</span><i>/</i><span>Web tools</span><i>/</i>
+      </div>
+    </div>
+
+    <section class="section wrap" id="intro">
+      <p class="label">Hello</p>
+      <p class="statement" data-split="words-scrub">I'm Vishwak, a student with a deep interest in aeronautical engineering and a habit of building things from scratch: aircraft performance tools, an orbital mechanics game and web apps that run on real physics.</p>
+      <a class="more" href="/about/">More about me <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="section wrap" id="work">
+      <p class="label">Selected work</p>
+      <h2 class="h2" data-split="chars">Things I've built</h2>
+      <div class="work">
+        <article class="work-item">
+          <a class="work-media" href="/projects/aircraft-performance-calculator/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/calc-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">01 / Aerodynamics</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/aircraft-performance-calculator/">Aircraft Performance Calculator</a></h3>
+            <p data-split="lines">Lift, drag, L/D, thrust-to-weight and Breguet range from real aerospace equations, with air density from the ISA atmosphere model.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>ISA model</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/aircraft-performance-calculator/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://aircraftperformacecalculator.netlify.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+        <article class="work-item">
+          <a class="work-media" href="/projects/aeromatch/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/aeromatch-results.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">02 / Aircraft selection</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/aeromatch/">AeroMatch</a></h3>
+            <p data-split="lines">Describe a mission and it scores 123 aircraft on range, capacity, runway, surface, terrain, mission type and budget, then explains its top picks.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Scoring model</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/aeromatch/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://aeromatcher.netlify.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+        <article class="work-item">
+          <a class="work-media" href="/projects/exorbit/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/exorbit-play.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">03 / Orbital mechanics</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/exorbit/">Exorbit</a></h3>
+            <p data-split="lines">A satellite gravity game on a custom Newtonian physics engine: orbit planets, collect data, manage fuel and heat, unlock upgrades.</p>
+            <ul class="tags"><li>HTML5 Canvas</li><li>JavaScript</li><li>Physics engine</li><li>Web Audio</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/exorbit/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://exorbit.netlify.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+        <article class="work-item">
+          <a class="work-media" href="/projects/cricscore/" data-reveal="image" tabindex="-1" aria-hidden="true">
+            <img src="/assets/img/projects/cric-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-body">
+            <p class="work-index">04 / Web app</p>
+            <h3 class="work-title" data-split="chars"><a href="/projects/cricscore/">CricScore</a></h3>
+            <p data-split="lines">Ball-by-ball scoring with free-hit logic, extras, player career stats, undo and an admin PIN, saved offline on your phone.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>localStorage</li></ul>
+            <p class="links">
+              <a class="more" href="/projects/cricscore/">Case study <span aria-hidden="true">→</span></a>
+              <a class="more" href="https://cscorer.netlify.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+      </div>
+      <a class="btn btn-line" href="/projects/" data-reveal="up" style="margin-top:56px">See all 6 projects <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="section wrap" id="toolkit">
+      <p class="label">Toolkit</p>
+      <div class="split">
+        <div>
+          <h2 class="h2" data-split="chars">What I work with</h2>
+          <p class="lede" data-split="lines" style="margin-top:18px">Equations first, then code and models: the theory and tools behind everything on this site.</p>
+          <a class="more" href="/skills/">All skills <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="plate" data-reveal="up">
+          <div class="plate-head"><span>Spec sheet</span><span>short version</span></div>
+          <table class="spec">
+            <tbody>
+              <tr><th scope="row">Engineering</th><td><ul><li class="chip">Aerodynamics</li><li class="chip">ISA atmosphere</li><li class="chip">Orbital mechanics</li></ul></td></tr>
+              <tr><th scope="row">Modelling</th><td><ul><li class="chip">Fusion 360</li><li class="chip">Blender</li><li class="chip">TinkerCAD</li></ul></td></tr>
+              <tr><th scope="row">Code</th><td><ul><li class="chip">HTML / CSS / JS</li><li class="chip">Python</li></ul></td></tr>
+              <tr><th scope="row">Ship</th><td><ul><li class="chip">Git &amp; GitHub</li><li class="chip">Vercel</li><li class="chip">Netlify</li></ul></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="contact">
+      <p class="label">Contact</p>
+      <div class="plate" data-reveal="up">
+        <div class="plate-head"><span>Contact</span><span>channel open</span></div>
+        <div class="contact-grid">
+          <div>
+            <h2 class="h2" data-split="chars">Get in touch</h2>
+            <p data-split="lines">Open to collaborations, feedback, or just a good conversation about planes and engineering.</p>
+            <a class="contact-mail" href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a>
+          </div>
+          <form class="form" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="visually-hidden"><label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+            <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+            <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+            <label class="field"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+            <button class="btn btn-solid" type="submit">Send message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="earth-room" aria-hidden="true"></div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+  <script type="module" src="/assets/js/home.js"></script>
+</body>
+</html>

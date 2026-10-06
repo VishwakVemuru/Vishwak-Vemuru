@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aircraft Performance Calculator · Vishwak Vemuru</title>
+  <meta name="description" content="An interactive aerodynamic calculator built on real aerospace equations. Move the sliders and lift, drag, range and efficiency update in real time." />
+  <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/aircraft-performance-calculator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/aircraft-performance-calculator/" />
+  <meta property="og:title" content="Aircraft Performance Calculator · Vishwak Vemuru" />
+  <meta property="og:description" content="An interactive aerodynamic calculator built on real aerospace equations. Move the sliders and lift, drag, range and efficiency update in real time." />
+  <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/vendor/lenis/lenis.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      d.dataset.theme = t;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('motion', 'motion-pending');
+        setTimeout(function () { d.classList.remove('motion-pending'); }, 3000);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/lagoon-1920.webp); --space-sm: url(/assets/img/space/lagoon-960.webp)" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22 L16 6 L29 22 L22 22 L16 14 L10 22 Z" /></svg>
+      <span>VV</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/about/">About</a>
+      <a href="/skills/">Skills</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode">
+      <span class="tt-track" aria-hidden="true"><span class="tt-knob"></span></span>
+    </button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu" hidden>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/skills/">Skills</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/contact/">Contact</a>
+    <p>Hyderabad, India · <a href="mailto:vishwakvemuru4u@gmail.com">vishwakvemuru4u@gmail.com</a></p>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">Aircraft Performance Calculator</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>Aircraft Performance Calculator</h1>
+      <p class="lede" data-split="lines">An interactive aerodynamic calculator built on real aerospace equations. Move the sliders and lift, drag, range and efficiency update in real time.</p>
+      <div class="btns" data-reveal="up" style="margin-top:26px">
+        <a class="btn btn-solid" href="https://aircraftperformacecalculator.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-line" href="https://github.com/VishwakVemuru/Aircraft-Performance-Calculator" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="facts" data-reveal="up" style="max-width:640px">
+        <div><dt>Type</dt><dd>Engineering tool</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, physics and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, ISA model</dd></div>
+        <div><dt>Status</dt><dd>Live</dd></div>
+      </dl>
+    </header>
+
+    <section class="wrap">
+      <figure class="shot shot-hero" data-reveal="image">
+          <img src="/assets/img/projects/calc-desktop.webp" width="1440" height="900" alt="The calculator on load: aerodynamic and aircraft parameter sliders on a graph-paper background" loading="lazy" decoding="async" />
+          <figcaption>What you see when you open it</figcaption>
+        </figure>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Overview</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The idea</h2>
+        <div class="prose">
+          <p data-split="lines">A browser-based calculator for the numbers that decide what an aircraft can do. Adjust wing area, lift and drag coefficients, airspeed, altitude, weights, thrust and fuel burn, and every result updates as you drag.</p>
+          <p data-split="lines">Air density isn't a fixed input: it comes from an International Standard Atmosphere model implemented from scratch, so climbing to altitude changes lift, drag and dynamic pressure the way it would on a real aircraft.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Features</p>
+      <h2 class="h2" data-split="chars">What it does</h2>
+      <ul class="features" data-reveal="up"><li><strong>Lift and drag</strong>Computed from the standard aerodynamic force equations.</li><li><strong>L/D ratio</strong>Aerodynamic efficiency, a core figure in aircraft design.</li><li><strong>Thrust-to-weight</strong>Decides climb and manoeuvre capability.</li><li><strong>Breguet range</strong>The equation aerospace engineers use to estimate how far an aircraft can fly.</li><li><strong>ISA atmosphere</strong>Air density updates automatically with altitude.</li><li><strong>Dynamic pressure</strong>From airspeed and density at altitude.</li><li><strong>Live status</strong>Flags like "below weight", "excellent" L/D and "long-haul" range.</li><li><strong>Ten inputs</strong>Wing area, C<sub>L</sub>, C<sub>D</sub>, airspeed, altitude, gross weight, thrust, TSFC, fuel and empty weight.</li></ul>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Under the hood</p>
+      <div class="split">
+        <h2 class="h2" data-split="chars">The maths</h2>
+        <div>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Lift</th><td>L = ½ · ρ · V² · S · C<sub>L</sub></td></tr><tr><th scope="row">Drag</th><td>D = ½ · ρ · V² · S · C<sub>D</sub></td></tr><tr><th scope="row">L/D ratio</th><td>η = C<sub>L</sub> / C<sub>D</sub></td></tr><tr><th scope="row">Thrust / weight</th><td>τ = T / (W · g)</td></tr><tr><th scope="row">Breguet range</th><td>R = (V / c) · (L/D) · ln(W<sub>i</sub> / W<sub>f</sub>)</td></tr><tr><th scope="row">ISA density</th><td>ρ(h) = 1.225 · e<sup>−h/8500</sup></td></tr></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="label">Screens</p>
+      <h2 class="h2" data-split="chars">A closer look</h2>
+      <div class="gallery">
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/calc-results.webp" width="1200" height="757" alt="Results panel: lift 594.9 kN, drag 14.9 kN, L/D 40, thrust-to-weight 0.874 and a Breguet range of 17,923 km" loading="lazy" decoding="async" />
+          <figcaption>Results update live: lift, drag, L/D, T/W and Breguet range</figcaption>
+        </figure>
+        <figure class="shot tall" data-reveal="image">
+          <img src="/assets/img/projects/calc-mobile.webp" width="780" height="1688" alt="The calculator on a phone, with the sliders stacked in one column" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <nav class="pager" aria-label="More projects">
+        <a href="/projects/web-design/"><small>← Previous</small><span>Web design</span></a>
+        <a href="/projects/aeromatch/"><small>Next →</small><span>AeroMatch</span></a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>© 2026 Vishwak Vemuru · built from scratch</p>
+      <p><a href="/about/">About</a> · <a href="/skills/">Skills</a> · <a href="/projects/">Projects</a> · <a href="/contact/">Contact</a></p>
+      <p><a href="https://github.com/VishwakVemuru">GitHub ↗</a> · <a href="mailto:vishwakvemuru4u@gmail.com">Email</a> · <a href="/privacy/">Privacy</a> · <a href="/credits/">Credits</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/vendor/gsap/SplitText.min.js" defer></script>
+  <script src="/assets/vendor/lenis/lenis.min.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
+  <script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>
