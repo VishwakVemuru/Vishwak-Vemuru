@@ -306,7 +306,7 @@ main { position: relative; z-index: 1; }
 .work-media img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform 1.2s var(--ease-out); }
 .work-media:hover img { transform: scale(1.04); }
 .work-index { font-family: var(--mono); font-size: 0.75rem; color: var(--text-3); }
-.work-title { font-family: var(--display); font-weight: 800; font-stretch: 115%; font-size: clamp(1.7rem, 2.7vw, 2.5rem); line-height: 1; text-transform: uppercase; margin: 10px 0 14px; }
+.work-title { font-family: var(--display); font-weight: 800; font-stretch: 115%; font-size: clamp(1.4rem, 2.7vw, 2.5rem); line-height: 1; text-transform: uppercase; margin: 10px 0 14px; }
 .work-title a { text-decoration: none; }
 .work-body p { color: var(--text-2); }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
@@ -341,7 +341,7 @@ main { position: relative; z-index: 1; }
   font-size: clamp(2.4rem, 10.5vw, 8.4rem); line-height: 0.86; letter-spacing: -0.02em; margin: 14px 0 26px;
 }
 .page-title .outline { color: transparent; -webkit-text-stroke: 1.5px var(--text); }
-.page-title-long { font-size: clamp(1.7rem, 7.4vw, 6.4rem); line-height: 0.9; }
+.page-title-long { font-size: clamp(1.5rem, 6vw, 5.2rem); line-height: 0.9; }
 .split-word { white-space: nowrap; }
 .crumbs { font-family: var(--mono); font-size: 0.8125rem; color: var(--text-2); }
 .crumbs a { color: var(--text-2); }

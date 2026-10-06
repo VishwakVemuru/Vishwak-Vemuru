@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CricScore · Vishwak Vemuru</title>
-  <meta name="description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <title>AeroCatalogue · Vishwak Vemuru</title>
+  <meta name="description" content="A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type." />
   <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
-  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/cricscore/" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/aerocatalogue/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/cricscore/" />
-  <meta property="og:title" content="CricScore · Vishwak Vemuru" />
-  <meta property="og:description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/aerocatalogue/" />
+  <meta property="og:title" content="AeroCatalogue · Vishwak Vemuru" />
+  <meta property="og:description" content="A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type." />
   <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -42,7 +42,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="space-bg" style="--space-lg: url(/assets/img/space/orion-1920.webp); --space-sm: url(/assets/img/space/orion-960.webp)" aria-hidden="true"></div>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/eagle-1920.webp); --space-sm: url(/assets/img/space/eagle-960.webp)" aria-hidden="true"></div>
 
   <header class="nav">
     <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
@@ -71,25 +71,25 @@
 
   <main id="main">
     <header class="page-hero">
-      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">CricScore</span></p>
-      <h1 class="page-title page-title-long" data-split="chars" data-intro>CricScore</h1>
-      <p class="lede" data-split="lines">A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline.</p>
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">AeroCatalogue</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>AeroCatalogue</h1>
+      <p class="lede" data-split="lines">A browsable catalogue of 123 aircraft and helicopters, from regional jets to seaplanes, with search, category filters and a spec sheet for every type.</p>
       <div class="btns" data-reveal="up" style="margin-top:26px">
-        <a class="btn btn-solid" href="https://cscorer.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
-        <a class="btn btn-line" href="https://github.com/VishwakVemuru/CricScore" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-solid" href="https://aerocatalogue.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+
       </div>
       <dl class="facts" data-reveal="up" style="max-width:640px">
-        <div><dt>Type</dt><dd>Web app</dd></div>
-        <div><dt>Role</dt><dd>Solo: design and code</dd></div>
-        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, localStorage</dd></div>
+        <div><dt>Type</dt><dd>Reference catalogue</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, data and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Aircraft database</dd></div>
         <div><dt>Status</dt><dd>Live</dd></div>
       </dl>
     </header>
 
     <section class="wrap">
       <figure class="shot shot-hero" data-reveal="image">
-          <img src="/assets/img/projects/cric-desktop.webp" width="1440" height="900" alt="CricScore home screen: new match, match history and a top players leaderboard" loading="lazy" decoding="async" />
-          <figcaption>Home screen, on a laptop</figcaption>
+          <img src="/assets/img/projects/aerocat-grid.webp" width="1440" height="900" alt="AeroCatalogue grid of aircraft photo cards: A220, A319neo, A321neo, B737 and more, each with range, seats and cruise speed" loading="lazy" decoding="async" />
+          <figcaption>The catalogue: photo cards with range, seats and cruise speed</figcaption>
         </figure>
     </section>
 
@@ -98,8 +98,8 @@
       <div class="split">
         <h2 class="h2" data-split="chars">The idea</h2>
         <div class="prose">
-          <p data-split="lines">CricScore was built to solve a real problem: scoring local cricket matches accurately on a phone, without an internet connection or a complicated app.</p>
-          <p data-split="lines">Pick a format, name the teams, unlock scoring with the admin PIN and log every delivery. The app handles the rules (extras, free hits, the last batter batting alone) and keeps everyone's career stats up to date.</p>
+          <p data-split="lines">A reference shelf for aircraft: 123 types, from the A220 and 737 MAX to helicopters and seaplanes, each with the numbers that matter when you compare them.</p>
+          <p data-split="lines">Search by name, manufacturer or category, narrow it down with one tap, and open any card for its spec sheet and a link to read more. The same database powers <a href="/projects/aeromatch/">AeroMatch</a>.</p>
         </div>
       </div>
     </section>
@@ -107,22 +107,16 @@
     <section class="section wrap">
       <p class="label">Features</p>
       <h2 class="h2" data-split="chars">What it does</h2>
-      <ul class="features" data-reveal="up"><li><strong>Ball-by-ball scoring</strong>Log every delivery with full detail.</li><li><strong>Any format</strong>T20, ODI, T10, Test or your own custom rules.</li><li><strong>Free-hit logic</strong>Automatically flags and enforces free hits after no-balls.</li><li><strong>Extras</strong>Wides, no-balls, byes and leg-byes handled correctly.</li><li><strong>Undo</strong>Step back through deliveries without corrupting the scorecard.</li><li><strong>Player career stats</strong>Batting and bowling tracked across matches, with a top players board.</li><li><strong>Joker role</strong>A custom player role with its own in-game logic.</li><li><strong>Admin PIN</strong>Locks scoring so nobody edits by accident.</li><li><strong>Works offline</strong>Saved to localStorage, so a refresh never loses the match.</li></ul>
+      <ul class="features" data-reveal="up"><li><strong>123 aircraft</strong>Airliners, regional jets, turboprops, freighters, business jets, military transports, seaplanes and helicopters.</li><li><strong>Nine categories</strong>Filter to narrow-body, wide-body, regional, turboprop and bush, cargo, bizjet and VIP, military, seaplane or helicopter.</li><li><strong>Search</strong>Find a type by name, manufacturer or category as you type.</li><li><strong>Spec sheets</strong>Range, seats, cargo, cruise speed, runway needed and maximum take-off weight for every aircraft.</li><li><strong>Read more</strong>Each aircraft links to its Wikipedia article.</li><li><strong>Works on phones</strong>The grid reflows to fit a phone screen.</li></ul>
     </section>
 
     <section class="section wrap">
       <p class="label">Under the hood</p>
       <div class="split">
-        <h2 class="h2" data-split="chars">How it works</h2>
+        <h2 class="h2" data-split="chars">The data</h2>
         <div>
-          <ol class="roadmap" data-reveal="up">
-            <li>Set up the match: format, teams, overs and players.</li>
-            <li>Enter the admin PIN to unlock scoring.</li>
-            <li>Tap the result after each delivery.</li>
-            <li>Player stats update automatically; undo fixes mistakes.</li>
-            <li>A match summary closes each innings.</li>
-          </ol>
-          <p class="fig-cap" style="border:0;padding-left:0">The rules engine sits on a history of deliveries, which is what makes undo safe.</p>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Range</th><td>km</td></tr><tr><th scope="row">Seats and cargo</th><td>passengers, kg and m³</td></tr><tr><th scope="row">Cruise speed</th><td>km/h</td></tr><tr><th scope="row">Runway needed</th><td>m, plus surface: paved, unpaved or water</td></tr><tr><th scope="row">MTOW</th><td>maximum take-off weight</td></tr><tr><th scope="row">Roles</th><td>the missions each aircraft is suited to</td></tr></tbody></table>
+          <p class="fig-cap" style="border:0;padding-left:0">What each of the 123 entries stores.</p>
         </div>
       </div>
     </section>
@@ -131,34 +125,25 @@
       <p class="label">Screens</p>
       <h2 class="h2" data-split="chars">A closer look</h2>
       <div class="gallery">
-        <figure class="shot tall" data-reveal="image">
-          <img src="/assets/img/projects/cric-home.webp" width="780" height="1688" alt="CricScore home on a phone: New Match, Match History and top players" loading="lazy" decoding="async" />
-          <figcaption>Home</figcaption>
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-detail.webp" width="1440" height="900" alt="AeroCatalogue spec sheet for the A220-100: 5,500 km range, 110 seats, 830 km/h cruise, 1,500 m runway" loading="lazy" decoding="async" />
+          <figcaption>A spec sheet</figcaption>
         </figure>
         <figure class="shot tall" data-reveal="image">
-          <img src="/assets/img/projects/cric-format.webp" width="780" height="1688" alt="Match format screen: T20, ODI, T10, Test or custom, team names and the singles rule" loading="lazy" decoding="async" />
-          <figcaption>Choosing a format</figcaption>
+          <img src="/assets/img/projects/aerocat-mobile.webp" width="780" height="1688" alt="AeroCatalogue on a phone: category filters and aircraft cards" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section wrap">
-      <p class="label">Roadmap</p>
-      <div class="split">
-        <h2 class="h2" data-split="chars">Coming next</h2>
-        <ul class="roadmap" data-reveal="up">
-          <li>Export scorecards as PDF</li>
-          <li>Partnership tracking</li>
-          <li>Over-by-over run-rate graph</li>
-          <li>Installable on Android (PWA)</li>
-        </ul>
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aerocat-title.webp" width="1440" height="900" alt="AeroCatalogue title screen: 123 aircraft, 9 categories, 16 helicopters, 8 seaplanes" loading="lazy" decoding="async" />
+          <figcaption>The title screen</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="section wrap">
       <nav class="pager" aria-label="More projects">
-        <a href="/projects/aerocatalogue/"><small>← Previous</small><span>AeroCatalogue</span></a>
-        <a href="/projects/web-design/"><small>Next →</small><span>Web design</span></a>
+        <a href="/projects/exorbit/"><small>← Previous</small><span>Exorbit</span></a>
+        <a href="/projects/cricscore/"><small>Next →</small><span>CricScore</span></a>
       </nav>
     </section>
   </main>

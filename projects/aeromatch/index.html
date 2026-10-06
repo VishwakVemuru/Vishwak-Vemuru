@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CricScore · Vishwak Vemuru</title>
-  <meta name="description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <title>AeroMatch · Vishwak Vemuru</title>
+  <meta name="description" content="An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit." />
   <meta name="theme-color" content="#08111f" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#e8f0f8" media="(prefers-color-scheme: light)" />
-  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/cricscore/" />
+  <link rel="canonical" href="https://vishwakvemuru.netlify.app/projects/aeromatch/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/cricscore/" />
-  <meta property="og:title" content="CricScore · Vishwak Vemuru" />
-  <meta property="og:description" content="A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline." />
+  <meta property="og:url" content="https://vishwakvemuru.netlify.app/projects/aeromatch/" />
+  <meta property="og:title" content="AeroMatch · Vishwak Vemuru" />
+  <meta property="og:description" content="An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit." />
   <meta property="og:image" content="https://vishwakvemuru.netlify.app/assets/img/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -42,7 +42,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="space-bg" style="--space-lg: url(/assets/img/space/orion-1920.webp); --space-sm: url(/assets/img/space/orion-960.webp)" aria-hidden="true"></div>
+  <div class="space-bg" style="--space-lg: url(/assets/img/space/carina-1920.webp); --space-sm: url(/assets/img/space/carina-960.webp)" aria-hidden="true"></div>
 
   <header class="nav">
     <a class="nav-mark" href="/" aria-label="Vishwak Vemuru, home">
@@ -71,25 +71,25 @@
 
   <main id="main">
     <header class="page-hero">
-      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">CricScore</span></p>
-      <h1 class="page-title page-title-long" data-split="chars" data-intro>CricScore</h1>
-      <p class="lede" data-split="lines">A ball-by-ball cricket scorer for real matches with friends: free hits, extras, player stats and undo, all on your phone and offline.</p>
+      <p class="crumbs"><a href="/">Home</a> / <a href="/projects/">Projects</a> / <span aria-current="page">AeroMatch</span></p>
+      <h1 class="page-title page-title-long" data-split="chars" data-intro>AeroMatch</h1>
+      <p class="lede" data-split="lines">An aircraft recommender. Describe the mission (range, passengers, cargo, runway, terrain, budget) and it ranks 123 aircraft and helicopters by how well they fit.</p>
       <div class="btns" data-reveal="up" style="margin-top:26px">
-        <a class="btn btn-solid" href="https://cscorer.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
-        <a class="btn btn-line" href="https://github.com/VishwakVemuru/CricScore" target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-solid" href="https://aeromatcher.netlify.app/" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+
       </div>
       <dl class="facts" data-reveal="up" style="max-width:640px">
-        <div><dt>Type</dt><dd>Web app</dd></div>
-        <div><dt>Role</dt><dd>Solo: design and code</dd></div>
-        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, localStorage</dd></div>
+        <div><dt>Type</dt><dd>Engineering tool</dd></div>
+        <div><dt>Role</dt><dd>Solo: design, data and code</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Scoring model</dd></div>
         <div><dt>Status</dt><dd>Live</dd></div>
       </dl>
     </header>
 
     <section class="wrap">
       <figure class="shot shot-hero" data-reveal="image">
-          <img src="/assets/img/projects/cric-desktop.webp" width="1440" height="900" alt="CricScore home screen: new match, match history and a top players leaderboard" loading="lazy" decoding="async" />
-          <figcaption>Home screen, on a laptop</figcaption>
+          <img src="/assets/img/projects/aeromatch-results.webp" width="1440" height="900" alt="AeroMatch results: the A321neo, A320neo and A321XLR ranked first to third with match scores out of 100" loading="lazy" decoding="async" />
+          <figcaption>Recommendations for a 3,000 km, 150-seat scheduled mission</figcaption>
         </figure>
     </section>
 
@@ -98,8 +98,8 @@
       <div class="split">
         <h2 class="h2" data-split="chars">The idea</h2>
         <div class="prose">
-          <p data-split="lines">CricScore was built to solve a real problem: scoring local cricket matches accurately on a phone, without an internet connection or a complicated app.</p>
-          <p data-split="lines">Pick a format, name the teams, unlock scoring with the admin PIN and log every delivery. The app handles the rules (extras, free hits, the last batter batting alone) and keeps everyone's career stats up to date.</p>
+          <p data-split="lines">Choosing an aircraft is a trade-off: range against payload, runway length against speed, comfort against operating cost. AeroMatch turns that into a question you can answer in a minute.</p>
+          <p data-split="lines">You describe the mission, from a 3,000 km scheduled route to a ship-deck rescue, and it scores every aircraft and helicopter in a 123-entry database against it. The best fits come back ranked, with a score out of 100 and a plain-English reason for each pick.</p>
         </div>
       </div>
     </section>
@@ -107,22 +107,16 @@
     <section class="section wrap">
       <p class="label">Features</p>
       <h2 class="h2" data-split="chars">What it does</h2>
-      <ul class="features" data-reveal="up"><li><strong>Ball-by-ball scoring</strong>Log every delivery with full detail.</li><li><strong>Any format</strong>T20, ODI, T10, Test or your own custom rules.</li><li><strong>Free-hit logic</strong>Automatically flags and enforces free hits after no-balls.</li><li><strong>Extras</strong>Wides, no-balls, byes and leg-byes handled correctly.</li><li><strong>Undo</strong>Step back through deliveries without corrupting the scorecard.</li><li><strong>Player career stats</strong>Batting and bowling tracked across matches, with a top players board.</li><li><strong>Joker role</strong>A custom player role with its own in-game logic.</li><li><strong>Admin PIN</strong>Locks scoring so nobody edits by accident.</li><li><strong>Works offline</strong>Saved to localStorage, so a refresh never loses the match.</li></ul>
+      <ul class="features" data-reveal="up"><li><strong>Mission basics</strong>Range, passengers, cargo weight and cargo volume.</li><li><strong>13 mission types</strong>From scheduled airline and cargo to medevac, search and rescue, offshore, heli-skiing and naval.</li><li><strong>Operational limits</strong>Runway length and surface (paved, unpaved or water), hot-and-high, arctic, short-strip or ETOPS conditions.</li><li><strong>Helicopter options</strong>Hover capability and landing zones from full helipads to ship decks and unprepared ground.</li><li><strong>Your priorities</strong>Rank fuel efficiency, comfort, operating cost, range margin and speed in the order that matters to you.</li><li><strong>Explained results</strong>Top picks with a score breakdown and a reason, plus a sortable table of every qualifying aircraft.</li></ul>
     </section>
 
     <section class="section wrap">
       <p class="label">Under the hood</p>
       <div class="split">
-        <h2 class="h2" data-split="chars">How it works</h2>
+        <h2 class="h2" data-split="chars">How it scores</h2>
         <div>
-          <ol class="roadmap" data-reveal="up">
-            <li>Set up the match: format, teams, overs and players.</li>
-            <li>Enter the admin PIN to unlock scoring.</li>
-            <li>Tap the result after each delivery.</li>
-            <li>Player stats update automatically; undo fixes mistakes.</li>
-            <li>A match summary closes each innings.</li>
-          </ol>
-          <p class="fig-cap" style="border:0;padding-left:0">The rules engine sits on a history of deliveries, which is what makes undo safe.</p>
+<table class="eq" data-reveal="up"><tbody><tr><th scope="row">Range fit</th><td>Needs the route plus a 10 % fuel reserve; extra range scores higher</td></tr><tr><th scope="row">Capacity fit</th><td>Seats, cargo mass and volume, with a penalty for aircraft far too big for the job</td></tr><tr><th scope="row">Runway &amp; surface</th><td>Runway required against runway available, and paved / unpaved / water</td></tr><tr><th scope="row">Terrain</th><td>Hot-and-high, cold, short-strip and ETOPS capability</td></tr><tr><th scope="row">Mission &amp; budget</th><td>Exact or compatible mission roles, and budget tier</td></tr><tr><th scope="row">Priorities</th><td>Speed, efficiency (payload × range) and comfort weighted by your ranking</td></tr></tbody></table>
+          <p class="fig-cap" style="border:0;padding-left:0">Each factor scores 0–100; together they give the match score out of 100.</p>
         </div>
       </div>
     </section>
@@ -131,34 +125,21 @@
       <p class="label">Screens</p>
       <h2 class="h2" data-split="chars">A closer look</h2>
       <div class="gallery">
-        <figure class="shot tall" data-reveal="image">
-          <img src="/assets/img/projects/cric-home.webp" width="780" height="1688" alt="CricScore home on a phone: New Match, Match History and top players" loading="lazy" decoding="async" />
-          <figcaption>Home</figcaption>
+        <figure class="shot wide" data-reveal="image">
+          <img src="/assets/img/projects/aeromatch-start.webp" width="1440" height="900" alt="AeroMatch mission form: range, passengers, cargo, mission type, runway, terrain and priorities" loading="lazy" decoding="async" />
+          <figcaption>Setting up a mission</figcaption>
         </figure>
         <figure class="shot tall" data-reveal="image">
-          <img src="/assets/img/projects/cric-format.webp" width="780" height="1688" alt="Match format screen: T20, ODI, T10, Test or custom, team names and the singles rule" loading="lazy" decoding="async" />
-          <figcaption>Choosing a format</figcaption>
+          <img src="/assets/img/projects/aeromatch-mobile.webp" width="780" height="1688" alt="AeroMatch mission form on a phone" loading="lazy" decoding="async" />
+          <figcaption>On a phone</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section wrap">
-      <p class="label">Roadmap</p>
-      <div class="split">
-        <h2 class="h2" data-split="chars">Coming next</h2>
-        <ul class="roadmap" data-reveal="up">
-          <li>Export scorecards as PDF</li>
-          <li>Partnership tracking</li>
-          <li>Over-by-over run-rate graph</li>
-          <li>Installable on Android (PWA)</li>
-        </ul>
       </div>
     </section>
 
     <section class="section wrap">
       <nav class="pager" aria-label="More projects">
-        <a href="/projects/aerocatalogue/"><small>← Previous</small><span>AeroCatalogue</span></a>
-        <a href="/projects/web-design/"><small>Next →</small><span>Web design</span></a>
+        <a href="/projects/aircraft-performance-calculator/"><small>← Previous</small><span>Calculator</span></a>
+        <a href="/projects/exorbit/"><small>Next →</small><span>Exorbit</span></a>
       </nav>
     </section>
   </main>
